@@ -15,7 +15,7 @@ import { AboutPage } from '../pages/about/about';
 import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
+import { MapPage } from '../pages/mosque-near/map';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../pages/session-detail/session-detail';
@@ -27,7 +27,7 @@ import { SupportPage } from '../pages/support/support';
 
 import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
-
+import { PrayertimePage } from '../pages/prayertime/prayertime';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { UserData } from '../providers/user-data';
     SignupPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    PrayertimePage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +82,8 @@ import { UserData } from '../providers/user-data';
     SignupPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    PrayertimePage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
