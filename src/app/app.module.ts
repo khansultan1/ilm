@@ -28,7 +28,7 @@ import { SupportPage } from '../pages/support/support';
 import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
 import { PrayertimePage } from '../pages/prayertime/prayertime';
-
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -90,7 +90,8 @@ import { PrayertimePage } from '../pages/prayertime/prayertime';
     TimeTableData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    LocationAccuracy
   ]
 })
 export class AppModule { }

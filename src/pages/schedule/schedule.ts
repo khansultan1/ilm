@@ -7,10 +7,11 @@ import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { TimeTableData } from '../../providers/timetable-data';
+import {Quotes} from '../../model/qoutes';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html',
-  providers:[Diagnostic,LocationAccuracy]
+  providers:[Diagnostic]
 })
 export class SchedulePage {
   // the list is a child of the schedule page
@@ -30,7 +31,7 @@ export class SchedulePage {
   currentDateData:any=[];
   activeDateEn:any={};
   confDate: string;
-  
+  qoutes:any={};
   constructor(
     public alertCtrl: AlertController,
     public app: App,
@@ -42,11 +43,28 @@ export class SchedulePage {
     private diagnostic: Diagnostic,
     private locationAccuracy: LocationAccuracy,
     public confData: TimeTableData
-  ) {    this.getSchedule();}
-  ionViewDidLoad() {
-
+  ) {  
+      this.enableLocation();
+      this.getSchedule();
+        this.getQuotes();
   }
-
+  ionViewDidLoad() {
+ 
+  }
+  enableLocation()
+  {
+  this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+  console.log(canRequest,'request..');
+  if(canRequest) {
+  // the accuracy option will be ignored by iOS
+  this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+  () => alert('Request successful'),
+  error => alert('Error requesting location permissions'+JSON.stringify(error))
+  );
+  }
+  
+  });
+  }
   presentFilter() {
     let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
     modal.present();
@@ -189,5 +207,14 @@ export class SchedulePage {
         toast.present();
       }, 1000);
     });
+  }
+  getQuotes(){
+    let quotes= new Quotes;
+   let data=quotes.data.split(/\r?\n/);
+   let random=Math.floor(Math.random() * 185);
+   let qt=data[random].trim().split('|');
+   this.qoutes['qoutes']=  qt[0]
+   this.qoutes['author'] = qt[1];
+   
   }
 }
