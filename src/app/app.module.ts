@@ -29,6 +29,7 @@ import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
 import { PrayertimePage } from '../pages/prayertime/prayertime';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { QiblaPage } from '../pages/qibla/qibla';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -44,7 +45,8 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
     TabsPage,
     TutorialPage,
     SupportPage,
-    PrayertimePage
+    PrayertimePage,
+    QiblaPage
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,8 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
     TabsPage,
     TutorialPage,
     SupportPage,
-    PrayertimePage
+    PrayertimePage,
+    QiblaPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

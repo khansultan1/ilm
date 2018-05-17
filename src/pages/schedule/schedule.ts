@@ -6,6 +6,7 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
+
 import { TimeTableData } from '../../providers/timetable-data';
 import {Quotes} from '../../model/qoutes';
 @Component({
@@ -44,9 +45,31 @@ export class SchedulePage {
     private locationAccuracy: LocationAccuracy,
     public confData: TimeTableData
   ) {  
-      this.enableLocation();
-      this.getSchedule();
-        this.getQuotes();
+      //this.enableLocation();
+        let errorCallback = (e) => {
+          this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+    
+            if(canRequest) {
+              // the accuracy option will be ignored by iOS
+              this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+                () => {
+                console.log('Request successful')
+               
+              },
+                error => console.log('Error requesting location permissions', error)
+              );
+            }
+          })
+        };
+      let successCallback = (isAvailable) => {
+     console.log('Is available? ' + isAvailable);
+      this.getSchedule()
+      this.getQuotes();
+    };
+     this.diagnostic.isLocationEnabled().then(successCallback).catch(errorCallback);
+        
+        // only android
+        //this.diagnostic.isGpsLocationEnabled().then(successCallback, errorCallback);
   }
   ionViewDidLoad() {
  
@@ -87,24 +110,8 @@ export class SchedulePage {
   getSchedule() {
     // Close any open sliding items when the schedule updates
     // this.scheduleList && this.scheduleList.closeSlidingItems();
-    // let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); };
-    // let errorCallback = (e) => {
-    //   this.locationAccuracy.canRequest().then((canRequest: boolean) => {
-
-    //     if(canRequest) {
-    //       // the accuracy option will be ignored by iOS
-    //       this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
-    //         () => console.log('Request successful'),
-    //         error => console.log('Error requesting location permissions', error)
-    //       );
-    //     }
-    //   })
-    // };
     
-    // this.diagnostic.isLocationEnabled().then(successCallback).catch(errorCallback);
     
-    // // only android
-    // this.diagnostic.isGpsLocationEnabled().then(successCallback, errorCallback);
     this.confData.load().subscribe(data =>{
       this.tdData=data.data;
       this.getCurrentDateData();
