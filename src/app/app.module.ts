@@ -30,6 +30,11 @@ import { UserData } from '../providers/user-data';
 import { PrayertimePage } from '../pages/prayertime/prayertime';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { QiblaPage } from '../pages/qibla/qibla';
+import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { GetLocation } from '../providers/getcurrentlocation';
+import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder} from '@ionic-native/native-geocoder';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -94,7 +99,12 @@ import { QiblaPage } from '../pages/qibla/qibla';
     UserData,
     InAppBrowser,
     SplashScreen,
-    LocationAccuracy
+    LocationAccuracy,
+    DeviceOrientation,
+    Diagnostic,
+    GetLocation,
+    Geolocation,
+    NativeGeocoder
   ]
 })
 export class AppModule { }

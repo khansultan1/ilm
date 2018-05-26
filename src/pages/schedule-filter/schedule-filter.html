@@ -5,7 +5,7 @@
     </ion-buttons>
 
     <ion-title>
-      Filter Sessions
+    Settings
     </ion-title>
 
     <ion-buttons end>
@@ -15,22 +15,53 @@
 </ion-header>
 
 <ion-content class="outer-content">
+  <ion-list>
+      <button ion-item>
+          <ion-icon name="alarm" item-start></ion-icon>
+          Alarm Settings
+     
+        </button>
+
+      <button ion-item>
+          <ion-icon name="calendar" item-start></ion-icon>
+         Islamic Calendar
+         
+        </button>
+  </ion-list>
 
   <ion-list>
-    <ion-list-header>Tracks</ion-list-header>
+      <button ion-item>
+          <ion-icon name="map" item-start></ion-icon>
+          Map Settings
+        
+        </button>
 
-    <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
-      <span item-start class="dot"></span>
-      <ion-label>{{track.name}}</ion-label>
-      <ion-toggle [(ngModel)]="track.isChecked" color="secondary"></ion-toggle>
-    </ion-item>
+      <button ion-item>
+          <ion-icon name="brush" item-start></ion-icon>
+         Color Theme
+         
+      </button>
 
   </ion-list>
 
   <ion-list>
-    <button ion-item (click)="resetFilters()" detail-none class="reset-filters">
-      Reset All Filters
-    </button>
+      <button ion-item>
+          <ion-icon name="chatbubbles" item-start></ion-icon>
+         Feeback
+     
+        </button>
+
+      <button ion-item>
+          <ion-icon name="person" item-start></ion-icon>
+         About Us
+         
+      </button>
+
+      <button ion-item>
+          <ion-icon name="share-alt" item-start></ion-icon>
+        Share this app
+         
+      </button>
   </ion-list>
 
 </ion-content>

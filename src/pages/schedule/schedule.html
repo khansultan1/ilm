@@ -35,13 +35,19 @@
     <ion-card class="location-date-headLine">
         
         <ion-card-header>
-            <ion-icon name="pin"></ion-icon>  Mumbai India  
+            <ion-icon name="pin"></ion-icon>
+            <span>{{locationData.locality}}  {{locationData.subAdministrativeArea}}  {{locationData.administrativeArea}}</span> 
         </ion-card-header>
       
         <ion-card-content>
             <ion-label >{{activeDateEn.dayname}} {{activeDateEn.readable}}</ion-label>
-            <ion-label class="date-er">{{activeDateEn.weekday ?activeDateEn.weekday.en :'' }} {{activeDateEn.day}} {{activeDateEn.month ?activeDateEn.month.en :'' }} {{activeDateEn.year }}</ion-label>
-        </ion-card-content>
+            <ion-label class="date-er">{{activeDateEn.arabicDate}}</ion-label>
+            <ion-item>
+              <ion-icon name="time" item-start large></ion-icon>
+              <h2>Next Prayer</h2>
+              <p style="color:rgb(211, 208, 208)">{{nextPrayerTime.time + nextPrayerTime.text }}  <span style="margin-left:5px;">View All</span> </p>
+            </ion-item>
+          </ion-card-content>
         
         
           </ion-card>
@@ -49,7 +55,11 @@
         <ion-card>
             <ion-card-content>
                 <blockquote>
-                <span class="coute-sign">“</span>{{qoutes['qoutes']}}<span class="coute-sign">”</span>
+                <!-- <span class="coute-sign">“</span> -->
+
+                  {{qoutes['qoutes']}}
+                    
+                    <!--<span class="coute-sign"> ”</span> -->
             
                 <div class="source">{{qoutes['author']}}</div> 
               </blockquote>

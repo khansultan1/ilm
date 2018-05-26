@@ -15,12 +15,14 @@ export class TimeTableData {
 
   constructor(public http: Http, public user: UserData) { }
 
-  load(): any {
-    console.log('load');
+  load(lat,long): any {
+    
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return this.http.get('http://api.aladhan.com/v1/calendar?latitude=19.186752&longitude=72.954549')
+
+
+      return this.http.get('http://api.aladhan.com/v1/calendar?latitude='+lat+'&longitude='+long)
         .map(this.processData, this);
     }
   }
@@ -65,33 +67,6 @@ export class TimeTableData {
     */
   }
 
-  getTimeline(dayIndex: number, queryText = '', excludeTracks: any[] = [], segment = 'all') {
-    return this.load().map((data: any) => {
-      let day = data.schedule[dayIndex];
-      day.shownSessions = 0;
-
-      queryText = queryText.toLowerCase().replace(/,|\.|-/g, ' ');
-      let queryWords = queryText.split(' ').filter(w => !!w.trim().length);
-
-      day.groups.forEach((group: any) => {
-        group.hide = true;
-
-        group.sessions.forEach((session: any) => {
-          // check if this session should show or not
-          this.filterSession(session, queryWords, excludeTracks, segment);
-
-          if (!session.hide) {
-            // if this session is not hidden then this group should show
-            group.hide = false;
-            day.shownSessions++;
-          }
-        });
-
-      });
-
-      return day;
-    });
-  }
 
   filterSession(session: any, queryWords: string[], excludeTracks: any[], segment: string) {
 
@@ -133,25 +108,25 @@ export class TimeTableData {
   }
 
   getSpeakers() {
-    return this.load().map((data: any) => {
-      return data.speakers.sort((a: any, b: any) => {
-        let aName = a.name.split(' ').pop();
-        let bName = b.name.split(' ').pop();
-        return aName.localeCompare(bName);
-      });
-    });
+    // return this.load().map((data: any) => {
+    //   return data.speakers.sort((a: any, b: any) => {
+    //     let aName = a.name.split(' ').pop();
+    //     let bName = b.name.split(' ').pop();
+    //     return aName.localeCompare(bName);
+    //   });
+    // });
   }
 
   getTracks() {
-    return this.load().map((data: any) => {
-      return data.tracks.sort();
-    });
+    // return this.load().map((data: any) => {
+    //   return data.tracks.sort();
+    // });
   }
 
   getMap() {
-    return this.load().map((data: any) => {
-      return data.map;
-    });
+    // return this.load().map((data: any) => {
+    //   return data.map;
+    // });
   }
 
 }

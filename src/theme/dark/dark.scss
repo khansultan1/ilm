@@ -12,7 +12,7 @@
 // remember to copy over the complete map and then extend it
 $colors: (
   primary:    (base: #eeae15, contrast:#000),
-  secondary:  (base: #007ACC, contrast: #000),
+  secondary:  (base: rgba(69, 69, 70, 0.651), contrast: #000),
   danger:     #f43e00,
   light:      (base:#bdc3c7, contrast:#000),
   dark:       (base:#d35400, contrast:#000),
@@ -23,7 +23,7 @@ $colors: (
 
 $text-color:                 #DADFE1 !default;
 $link-color:                 color($colors, primary) !default;
-$background-color:           #363232 !default;
+$background-color:           #f3f3f3 !default;
 $subdued-text-color:         #666 !default;
 
 $font-family-base:            "Helvetica Neue", "Roboto", sans-serif !default;

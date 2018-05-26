@@ -75,6 +75,12 @@
 }
 .card-header-md{ color: #e4e0e0;padding:8px;text-align: left}
 .scroll-content{overflow: hidden;}
-.card-md{ background: rgba(105, 104, 104, 0.871);}
-
-blockquote{font-size:1.6em; word-spacing: 1px;text-align: justify;}
+.card-md{    
+  background: rgba(105, 104, 104, 0.58);
+  color: #fff;}
+  .fab-md{border: 1px solid rgba(105, 104, 104, 0.58);}
+blockquote{font-size:1.5em;}
+.tabs-md .tab-button, .tabs-md .tab-button-icon{color:#f3f3f3}
+.tabs-md .tab-button[aria-selected=true], .tabs-md .tab-button[aria-selected=true] .tab-button-icon{
+  color: #8affef;
+}

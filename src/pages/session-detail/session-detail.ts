@@ -19,7 +19,7 @@ export class SessionDetailPage {
   ) {}
 
   ionViewWillEnter() {
-    this.dataProvider.load().subscribe((data: any) => {
+    this.dataProvider.load(1212.31342,12312.23).subscribe((data: any) => {
       if (
         data &&
         data.schedule &&

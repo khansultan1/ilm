@@ -43,7 +43,7 @@ export class PrayertimePage {
     
     // // only android
     // this.diagnostic.isGpsLocationEnabled().then(successCallback, errorCallback);
-    this.confData.load().subscribe(data =>{
+    this.confData.load(1212.31342,12312.23).subscribe(data =>{
       this.tdData=data.data;
       this.getCurrentDateData();
    });

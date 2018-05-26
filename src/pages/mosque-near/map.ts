@@ -1,10 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-
-//import { TimeTableData } from '../../providers/timetable-data';
-
 import { Platform } from 'ionic-angular';
-
-
+import { GetLocation } from '../../providers/getcurrentlocation';
 declare var google: any;
 
 
@@ -15,33 +11,19 @@ declare var google: any;
 export class MapPage {
 
   @ViewChild('mapCanvas') mapElement: ElementRef;
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform,  public getLocation:GetLocation,) {
   }
 
   ionViewDidLoad() {
-
-      // this.confData.getMap().subscribe((mapData: any) => {
         let mapEle = this.mapElement.nativeElement;
-
-       // let map = new google.maps.Map(mapEle, { });
-
-        // mapData.forEach((markerData: any) => {
-        //   let infoWindow = new google.maps.InfoWindow({
-        //     content: `<h5>${markerData.name}</h5>`
-        //   });
-
-        // let posMaceio = { lat: -9.648139, lng: -35.717239 }
-        // let map = new google.maps.Map(mapEle, {
-        //     zoom: 8,
-        //     center: posMaceio,
-        //     mapTypeId: 'roadmap'
-        // });
-        // map.setCenter(posMaceio);
         var infowindow=null;
         var map=null;
+        var locationObj=this.getLocation;
         function initMap() {
-          var pyrmont = {lat: 19.218331, lng: 72.978090};
-  
+          let location=locationObj.getCurrentLocation();
+          location.then(resp=>{
+          var pyrmont = {lat: resp['latitude'], lng: resp['longitude']};
+            
            map = new google.maps.Map(mapEle, {
             center: pyrmont,
             zoom: 15
@@ -51,9 +33,10 @@ export class MapPage {
           var service = new google.maps.places.PlacesService(map);
           service.nearbySearch({
             location: pyrmont,
-            radius: 1500,
+            radius: 3000,
             type: ['mosque']
           }, callback);
+        })
         }
   
         function callback(results, status) {
@@ -90,6 +73,7 @@ export class MapPage {
         // });
 
       // });
-
+     
   }
+  
 }
