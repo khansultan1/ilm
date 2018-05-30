@@ -13,6 +13,7 @@ export class GetLocation {
 
   }
   getCurrentLocation(){
+    
    return this.geolocation.getCurrentPosition().then((resp) => {
     this.cordinates= resp.coords;
     return resp.coords

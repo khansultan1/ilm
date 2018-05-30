@@ -7,10 +7,9 @@ import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { TimeTableData } from '../../providers/timetable-data';
-import { GetLocation } from '../../providers/getcurrentlocation';
 import {Quotes} from '../../model/qoutes';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
-
+import { Geolocation } from '@ionic-native/geolocation';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
@@ -42,8 +41,8 @@ export class SchedulePage {
     private diagnostic: Diagnostic,
     private locationAccuracy: LocationAccuracy,
     public confData: TimeTableData,
-    public getLocation:GetLocation,
-    private nativeGeocoder: NativeGeocoder
+    private nativeGeocoder: NativeGeocoder,
+    private geolocation: Geolocation
   ) {  
         let errorCallback = (e) => {
           this.locationAccuracy.canRequest().then((canRequest: boolean) => {
@@ -63,7 +62,7 @@ export class SchedulePage {
       let successCallback = (isAvailable) => {
      console.log('Is available? ' + isAvailable);
      if(isAvailable){
-      this.getCurrentLocation();
+      this.getCurrentLocations();
      }else{
       this.enableLocation();
      }
@@ -167,11 +166,10 @@ export class SchedulePage {
    this.qoutes['author'] = qt[1].trim();
    
   }
-  getCurrentLocation(){
-    let location=this.getLocation.getCurrentLocation();
-    location.then(resp=>{
-      this.getSchedule(resp['latitude'], resp['longitude']);
-      this.nativeGeocoder.reverseGeocode(resp['latitude'], resp['longitude'])
+  getCurrentLocations(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.getSchedule(resp.coords['latitude'], resp.coords['longitude']);
+      this.nativeGeocoder.reverseGeocode(resp.coords['latitude'], resp.coords['longitude'])
     .then((result: NativeGeocoderReverseResult) =>{
         console.log(result);
       this.locationData=result[0];

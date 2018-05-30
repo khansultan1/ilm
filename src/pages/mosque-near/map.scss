@@ -29,3 +29,7 @@ page-map #map_canvas.show-map {
 ion-app._gmaps_cdv_ .nav-decor{
   background-color: transparent !important;
 }
+.footer-info{position: absolute;bottom: 0;width: 100%;}
+.footer-info .list-md{margin-bottom:0px; }
+.item-md h2{font-size: 2rem}
+.direction{font-weight: 600;text-decoration: underline}

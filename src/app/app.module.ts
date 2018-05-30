@@ -20,7 +20,7 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
-
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
@@ -104,7 +104,8 @@ import { NativeGeocoder} from '@ionic-native/native-geocoder';
     Diagnostic,
     GetLocation,
     Geolocation,
-    NativeGeocoder
+    NativeGeocoder,
+    LaunchNavigator
   ]
 })
 export class AppModule { }

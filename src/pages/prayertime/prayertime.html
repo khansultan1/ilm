@@ -4,15 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Today</ion-title>
-    <!-- <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
-      <ion-segment-button value="all">
-        All
-      </ion-segment-button>
-      <ion-segment-button value="favorites">
-        Favorites
-      </ion-segment-button>
-    </ion-segment> -->
+    <ion-title>Today's Prayer Timing </ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="presentFilter()">
@@ -21,24 +13,29 @@
     </ion-buttons>
   </ion-navbar>
     
-  <!-- <ion-toolbar no-border-top>
-    <ion-searchbar color="primary"
-                   [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
-                   placeholder="Search">
-    </ion-searchbar>
-  </ion-toolbar> -->
+  
 </ion-header>
 
 <ion-content>
 
-    <ion-card class="location-date-headLine">
-        
-        <ion-card-header>
-            <ion-icon name="pin"></ion-icon>  Mumbai India  
-        </ion-card-header>
-    </ion-card>    
+    <ion-list>
+        <ion-item *ngFor="let timing of currentDateData.timing">
+            <ion-avatar item-start>
+            <img src="./assets/img/{{timing.count}}.png">
+          </ion-avatar>
+          <h2>{{timing.name}}</h2>
+          <p>{{timing.value}}</p>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+      </ion-list>
  
 
-
+      <ion-list class="footer-info">
+      <ion-item>      
+      <button ion-item>
+          <ion-icon name="settings" item-start></ion-icon>
+          Change Time Preferences
+        </button>
+      </ion-item>
+      </ion-list>
 </ion-content>
