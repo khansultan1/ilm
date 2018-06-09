@@ -4,12 +4,14 @@ import { AlertController, App, FabContainer, ItemSliding, List, ModalController,
 import { UserData } from '../../providers/user-data';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { SessionDetailPage } from '../session-detail/session-detail';
+import { PrayertimePage } from '../prayertime/prayertime';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { TimeTableData } from '../../providers/timetable-data';
 import {Quotes} from '../../model/qoutes';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
+import { DuaPage } from '../dua/dua';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
@@ -179,9 +181,9 @@ export class SchedulePage {
     })
   }
   getPrayrerTime(time){
-    let currentTime=new Date().getHours().toString() + new Date().getMinutes().toString();
+    let currentTime=parseInt(new Date().getHours().toString() + new Date().getMinutes().toString());
     function nonNumaric(str){
-      return str.replace(/\D/g,'');
+      return parseInt(str.replace(/\D/g,''));
     }
     let setTime={} 
     if(currentTime <= nonNumaric(time.Fajr)){
@@ -199,5 +201,11 @@ export class SchedulePage {
       }
     return setTime;
   }
-  
+  goToPrayterTime(){
+    this.navCtrl.push(PrayertimePage);
+ 
+  }
+  goToDuaPage(){
+    this.navCtrl.push(DuaPage);
+  }
 }

@@ -15,7 +15,7 @@ export class PrayertimePage {
   currentDateData:any=[];
   activeDateEn:any={};
   confDate: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: TimeTableData,  public modalCtrl: ModalController, public geolocation:Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: TimeTableData,  public modalCtrl: ModalController, public geolocation:Geolocation  ) {
     this.getSchedule();
   }
 

@@ -74,7 +74,7 @@
   color: #e4e0e0;
 }
 .card-header-md{ color: #e4e0e0;padding:8px;text-align: left}
-.scroll-content{overflow: hidden;}
+.scroll-content{overflow: auto;}
 .card-md{    
   background: rgba(105, 104, 104, 0.58);
   color: #fff;}
@@ -82,5 +82,6 @@
 blockquote{font-size:1.5em;}
 .tabs-md .tab-button, .tabs-md .tab-button-icon{color:#f3f3f3}
 .tabs-md .tab-button[aria-selected=true], .tabs-md .tab-button[aria-selected=true] .tab-button-icon{
-  color: #8affef;
+  color: rgb(32, 185, 154)
 }
+.content-md{background:#fff}

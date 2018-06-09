@@ -18,7 +18,8 @@ export class QiblaPage {
    clat:any = this.klat;
    clong = this.klong;   
    map:any;
-   currentLatLng:any;
+   directionpositon:any;
+   currentLatLng:any={};
    @ViewChild('qiblamap') mapElement: ElementRef;
    @ViewChild('direction') directionElem: ElementRef;
    @ViewChild('directionCont') directionCont: ElementRef;
@@ -44,11 +45,13 @@ export class QiblaPage {
 
     var subscription = this.deviceOrientation.watchHeading().subscribe(
       (data: DeviceOrientationCompassHeading) => {
-        console.log(data);
+
         let directionCont = this.directionCont.nativeElement;
         directionCont.style.transform = "rotate("+data.trueHeading+"deg)";
         var bearing = this.getBearing(this.klat,this.klong,this.currentLatLng['latitude'],this.currentLatLng['longitude']);
                       this.rotateAnimation(bearing);
+                  
+                                
       });
   }
   loadMap(){
@@ -102,6 +105,7 @@ function animateCircle(line) {
 }, 20);
 }
 var bearing = this.getBearing(this.klat,this.klong,resp['latitude'],resp['longitude']);
+this.currentLatLng['positondeg']=bearing; 
 this.rotateAnimation(bearing);
 this.orientation();
 

@@ -24,7 +24,7 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
-
+import { DuaPage } from '../pages/dua/dua';
 import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
 import { PrayertimePage } from '../pages/prayertime/prayertime';
@@ -51,7 +51,8 @@ import { NativeGeocoder} from '@ionic-native/native-geocoder';
     TutorialPage,
     SupportPage,
     PrayertimePage,
-    QiblaPage
+    QiblaPage,
+    DuaPage
   ],
   imports: [
     BrowserModule,
@@ -91,7 +92,8 @@ import { NativeGeocoder} from '@ionic-native/native-geocoder';
     TutorialPage,
     SupportPage,
     PrayertimePage,
-    QiblaPage
+    QiblaPage,
+    DuaPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
