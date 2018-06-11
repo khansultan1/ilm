@@ -3,7 +3,6 @@ import { Component, ViewChild } from '@angular/core';
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
 import { UserData } from '../../providers/user-data';
 import { Diagnostic } from '@ionic-native/diagnostic';
-import { SessionDetailPage } from '../session-detail/session-detail';
 import { PrayertimePage } from '../prayertime/prayertime';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
@@ -12,6 +11,7 @@ import {Quotes} from '../../model/qoutes';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
 import { DuaPage } from '../dua/dua';
+import { NameofallahPage } from '../nameofallah/nameofallah';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
@@ -124,10 +124,6 @@ export class SchedulePage {
     });
 
   }
-
-  goToSessionDetail(sessionData: any) {
-    this.navCtrl.push(SessionDetailPage, { sessionId: sessionData.id, name: sessionData.name });
-  }
   getSchedule(lat,long) {    
     this.confData.load(lat,long).subscribe(data =>{
       this.tdData=data.data;
@@ -202,10 +198,13 @@ export class SchedulePage {
     return setTime;
   }
   goToPrayterTime(){
-    this.navCtrl.push(PrayertimePage);
+  this.navCtrl.push(PrayertimePage);
  
   }
   goToDuaPage(){
     this.navCtrl.push(DuaPage);
+  }
+  gotoNamepage(){
+    this.navCtrl.push(NameofallahPage);
   }
 }

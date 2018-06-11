@@ -1,0 +1,28 @@
+<!--
+  Generated template for the DuadetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{duaname}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="dua-background">
+    <ion-card *ngFor="let dua of Dua">
+        <ion-card-header>
+          {{dua.from}}
+        </ion-card-header>
+        <ion-card-content>
+         <p class="arabic">{{dua.ar}}</p>
+         <p class="english">{{dua.en}}</p>
+         <p class="desc">{{dua.desc}}</p>
+        </ion-card-content>
+      </ion-card>
+      <p class="search-truth">Taken from https://www.searchtruth.com</p>
+</ion-content>

@@ -13,9 +13,14 @@
 </ion-header>
 
 
-<ion-content>
-  <div class="dua-background">
-{{dua['ar']}}
-  </div>
-
+<ion-content class="dua-background">
+      <ion-searchbar
+      [(ngModel)]="duaSearch"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="searchDuaText($event)"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <ion-item *ngFor="let dua of dualabel" (click)="goToDetailPage(dua)">
+      {{dua}}
+    </ion-item>
 </ion-content>

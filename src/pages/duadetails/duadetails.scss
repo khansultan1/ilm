@@ -1,0 +1,20 @@
+page-duadetails {
+.dua-background{
+    background-image: url(../assets/img/dua1.jpg);
+ 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dua-wrapper{
+    background-color: rgba(109, 108, 108, 0.527);
+    height: 100%;
+    width: 100%;
+}
+p.arabic{font-size:2.5rem;padding-bottom: 10px;}
+p.english{font-size: 2rem}
+.toolbar-title-md{
+    font-size: 1.5rem;
+    white-space:pre-wrap;
+}
+.search-truth{text-align: center;font-size: 1rem;font-family: cursive}
+}
