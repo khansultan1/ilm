@@ -34,9 +34,8 @@ import { SinglenamePage } from '../pages/singlename/singlename';
 import { TasbeehPage } from '../pages/tasbeeh/tasbeeh';
 import { HalalPlacesPage } from '../pages/halal-places/halal-places';
 import { CalendarPage } from '../pages/calendar/calendar';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
-
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -105,7 +104,7 @@ import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
     LaunchNavigator,
     Geolocation,
     NativeGeocoder,
-    YoutubeVideoPlayer
+    StreamingMedia
   ]
 })
 export class AppModule { }

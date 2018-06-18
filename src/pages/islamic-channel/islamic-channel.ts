@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 /**
  * Generated class for the IslamicChannelPage page.
  *
@@ -15,11 +15,17 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 })
 export class IslamicChannelPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private youtube: YoutubeVideoPlayer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private streamingMedia: StreamingMedia) {
   }
 
   ionViewDidLoad() {
-    this.youtube.openVideo('zsZf4wnggz8');
+    let options: StreamingVideoOptions = {
+      successCallback: () => { console.log('Video played') },
+      errorCallback: (e) => { console.log('Error streaming', e) },
+      orientation: 'landscape'
+    };
+    
+    this.streamingMedia.playVideo('https://www.youtube.com/watch?v=WVZpCdHq3Qg ', options);
   }
 
 }
