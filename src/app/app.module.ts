@@ -15,7 +15,7 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
-import { TutorialPage } from '../pages/tutorial/tutorial';
+import { ZakatcalcPage } from '../pages/zakatcalc/zakatcalc';
 import { SupportPage } from '../pages/support/support';
 import { DuaPage } from '../pages/dua/dua';
 import { TimeTableData } from '../providers/timetable-data';
@@ -25,12 +25,17 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { QiblaPage } from '../pages/qibla/qibla';
 import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
 import { Diagnostic } from '@ionic-native/diagnostic';
-import { GetLocation } from '../providers/getcurrentlocation';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder} from '@ionic-native/native-geocoder';
 import { DuadetailsPage } from '../pages/duadetails/duadetails';
 import { NameofallahPage } from '../pages/nameofallah/nameofallah';
 import { SinglenamePage } from '../pages/singlename/singlename';
+import { TasbeehPage } from '../pages/tasbeeh/tasbeeh';
+import { HalalPlacesPage } from '../pages/halal-places/halal-places';
+import { CalendarPage } from '../pages/calendar/calendar';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
 
 @NgModule({
   declarations: [
@@ -44,14 +49,18 @@ import { SinglenamePage } from '../pages/singlename/singlename';
     ScheduleFilterPage,
     SignupPage,
     TabsPage,
-    TutorialPage,
+    ZakatcalcPage,
     SupportPage,
     PrayertimePage,
     QiblaPage,
     DuaPage,
     DuadetailsPage,
     NameofallahPage,
-    SinglenamePage
+    SinglenamePage,
+    TasbeehPage,
+    HalalPlacesPage,
+    CalendarPage,
+    IslamicChannelPage
   ],
   imports: [
     BrowserModule,
@@ -71,14 +80,18 @@ import { SinglenamePage } from '../pages/singlename/singlename';
     ScheduleFilterPage,
     SignupPage,
     TabsPage,
-    TutorialPage,
+    ZakatcalcPage,
     SupportPage,
     PrayertimePage,
     QiblaPage,
     DuaPage,
     DuadetailsPage,
     NameofallahPage,
-    SinglenamePage
+    SinglenamePage,
+    TasbeehPage,
+    HalalPlacesPage,
+    CalendarPage,
+    IslamicChannelPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -89,9 +102,10 @@ import { SinglenamePage } from '../pages/singlename/singlename';
     LocationAccuracy,
     DeviceOrientation,
     Diagnostic,
-    GetLocation,
+    LaunchNavigator,
     Geolocation,
-    NativeGeocoder
+    NativeGeocoder,
+    YoutubeVideoPlayer
   ]
 })
 export class AppModule { }

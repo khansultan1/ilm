@@ -1,0 +1,96 @@
+page-tasbeeh {
+//colors
+$white :#EFEFEF;
+$background-color:#FF7A23;
+$black: #333333;
+$display-color: $white;
+$increment-color: rgba(26, 188, 156, 1);
+$decrement-color: rgba(255, 174, 35, 1);
+$reset-color: rgba(246, 34, 63, 1);
+//common styles
+$radius:5px;
+/* offset-x | offset-y | blur-radius | spread-radius | color */
+$shadow:0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+$shadow-hover:0 14px 40px rgba(0,0,0,0.6), 0 10px 10px rgba(0,0,0,0.22);
+//initial styling remove default padding
+
+.main-body{
+  height: 100%;
+  background: $background-color;
+}
+.wrapper{
+  position: absolute;
+  height: 50%;
+  width:300px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto ;
+  //flexbox
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: center;
+  //padding
+  padding: 1em;
+  border-radius:$radius;
+  //wrapper counter
+  #wrapper__counter{
+    $length: 150px;
+    height: $length;
+    width: $length;
+    color: $black;
+    margin: auto;
+    line-height: $length;
+    //interpolate sass var's #${abc}
+    font-size: calc(#{$length} / 1.5);
+    background:$display-color;
+    border-radius: $radius;  
+    box-shadow: $shadow;
+    margin-bottom:30px;
+  }//endwrappercounter
+  
+  
+   //increment button
+ #wrapper__button__increment{
+  background: $increment-color;
+ }
+  //decrement button
+  #wrapper__button__decrement{
+    background: $decrement-color;
+  }
+  //reset button
+  #wrapper__button__reset {
+    background: $reset-color;
+  } 
+  //button common
+  .button{
+    position:relative;
+    height:50px;
+    width:50px;
+    margin: 0px 5px;
+    color:$white;
+    border:none;
+    border-radius: $radius;
+    line-height: 50px;
+    font-size:32px;
+    overflow: hidden;
+    box-shadow:$shadow;
+    &:hover{
+      box-shadow:$shadow-hover; 
+    }
+  }
+  
+}
+
+.container p{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+}
+
+
+
+}

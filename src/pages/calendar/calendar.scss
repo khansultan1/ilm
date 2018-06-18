@@ -1,0 +1,83 @@
+page-calendar {
+[col-1] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 14.285714285714286%;
+    width: 14.285714285714286%;
+    max-width: 14.285714285714286%;
+    color:#efefef;
+  }
+  .col {
+    text-align: center;
+    padding: 5px;
+  }
+  .last-month, .next-month {
+    color: #999999;
+    font-size: 90%;
+  }
+  .currentDate, .otherDate {
+    padding: 5px;
+  }
+  .currentDate {
+    font-weight: bold;
+    background-color: #56b2ba;
+    color: white;
+    border-radius: 30px;
+  }
+  .calendar-header {
+
+    color: #FFFFFF;
+  }
+  .event-bullet {
+    margin: 2px auto;
+    height: 5px;
+    width: 5px;
+    background-color: green;
+    border-radius: 30px;
+  }
+  .selected-date {
+    width: 20px;
+    height: 2px;
+    background-color: blue;
+  }
+  .unselected-date {
+    border: none;
+  }
+  .calendar-body {
+    .grid {
+      padding: 0;
+    }
+    .col:last-child {
+      border-right: none;
+    }
+    .calendar-weekday, .calendar-date {
+      text-align: center;
+      margin: 0;
+    }
+    .calendar-weekday {
+      font-weight: bold;
+      border-top: solid 1px #6c6c6c;
+      border-bottom: solid 1px #6c6c6c;
+      color:#fff;
+    }
+    .calendar-date {
+      border-bottom: solid 1px #6c6c6c;
+    }
+  }
+  .swiper-container-coverflow .swiper-wrapper,
+.swiper-container-flip .swiper-wrapper {
+    perspective: unset;
+}
+.public-event, .friend-event{position:absolute;height:5px;width:5px;border-radius:50%;bottom:0;left:0;right:0;margin:0px auto;}
+.public-event{background:#ff2366;left:10px}
+.friend-event{background:#8d4de8;right:5px}
+.event-bottom-head{border-bottom:1px solid #666;color:#fff}
+.big-size{bottom: auto;left: 8px; right: auto;margin: auto;top: 20px;height: 13px;width: 13px;}
+.event-bottom-head p{padding-left:20px}
+.event-bottom-head ion-col{text-align:left !important;}
+.item-md{background:#1a1b26;color: #777;}
+h2{padding-right:5px}
+.friends-items .big-size{right:initial;top:initial;bottom:15px;left:initial;margin-left:10px}
+.calendar-main{background: #000}
+}

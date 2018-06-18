@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Dua} from '../../model/dua_backup'
+import {Dua} from '../../model/dua'
 import { DuadetailsPage } from '../duadetails/duadetails';
 /**
  * Generated class for the DuaPage page.

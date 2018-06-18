@@ -12,6 +12,11 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 import { Geolocation } from '@ionic-native/geolocation';
 import { DuaPage } from '../dua/dua';
 import { NameofallahPage } from '../nameofallah/nameofallah';
+import { TasbeehPage } from '../tasbeeh/tasbeeh';
+import { ZakatcalcPage } from '../zakatcalc/zakatcalc';
+import { HalalPlacesPage } from '../halal-places/halal-places';
+import { CalendarPage } from '../calendar/calendar';
+import { IslamicChannelPage } from '../islamic-channel/islamic-channel';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
@@ -206,5 +211,21 @@ export class SchedulePage {
   }
   gotoNamepage(){
     this.navCtrl.push(NameofallahPage);
+  }
+  gotoTasbeeh(){
+    this.navCtrl.push(TasbeehPage);
+  }
+  goToZakatPage(){
+    this.navCtrl.push(ZakatcalcPage);
+  }
+  gotohalalPlace(){
+    this.navCtrl.push(HalalPlacesPage);
+  }
+  gotoCalendar(){
+    this.navCtrl.push(CalendarPage);
+  }
+  gotoIslamicChannel(){
+    this.navCtrl.push(IslamicChannelPage);
+    
   }
 }

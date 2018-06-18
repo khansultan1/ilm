@@ -5,14 +5,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Today</ion-title>
-    <!-- <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
-      <ion-segment-button value="all">
-        All
-      </ion-segment-button>
-      <ion-segment-button value="favorites">
-        Favorites
-      </ion-segment-button>
-    </ion-segment> -->
+    
 
     <ion-buttons end>
       <button ion-button icon-only (click)="presentFilter()">
@@ -21,13 +14,7 @@
     </ion-buttons>
   </ion-navbar>
     
-  <!-- <ion-toolbar no-border-top>
-    <ion-searchbar color="primary"
-                   [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
-                   placeholder="Search">
-    </ion-searchbar>
-  </ion-toolbar> -->
+
 </ion-header>
 
 <ion-content>
@@ -77,13 +64,13 @@
                 </ion-col>
                 <ion-col col-md-3  (click)="goToDuaPage()">
                         <button ion-fab class="btn3d btn-primary"></button>
-                      <ion-label>Dua</ion-label>
+                      <ion-label>Duas</ion-label>
                 </ion-col>
-                <ion-col col-md-3>
+                <ion-col col-md-3 (click)="goToZakatPage()">
                         <button ion-fab class="btn3d btn-success"></button>
                       <ion-label>Zakat Calculator</ion-label>
                 </ion-col>
-                <ion-col col-md-3>
+                <ion-col col-md-3 (click)="gotoTasbeeh()">
                     <button ion-fab class="btn3d btn-tasbih"></button>
                   <ion-label>Tasbih</ion-label>
             </ion-col>
@@ -94,15 +81,15 @@
                 <button ion-fab class="btn3d btn-99name"></button>
                 <ion-label>99 Name of Allah</ion-label>
               </ion-col>
-              <ion-col col-md-3>
+              <ion-col col-md-3 (click)="gotoCalendar()">
                 <button ion-fab class="btn3d btn-white"></button>
                 <ion-label>Islamic Calendar</ion-label>
              </ion-col>
-             <ion-col col-md-3>
+             <ion-col col-md-3 (click)="gotohalalPlace()">
                 <button ion-fab class="btn3d btn-info"></button>
               <ion-label>Halal Places</ion-label>
              </ion-col>
-                  <ion-col col-md-3>
+                  <ion-col col-md-3 (click)="gotoIslamicChannel()">
                       <button ion-fab class="btn3d btn-magick"></button>
                     <ion-label>Live Muslim Channels</ion-label>
                 </ion-col>

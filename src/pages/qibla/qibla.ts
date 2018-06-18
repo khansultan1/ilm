@@ -104,8 +104,8 @@ function animateCircle(line) {
     line.set('icons', icons);
 }, 20);
 }
-var bearing = this.getBearing(this.klat,this.klong,resp['latitude'],resp['longitude']);
-this.currentLatLng['positondeg']=bearing; 
+var bearing = this.getBearing(this.klat,this.klong,resp.coords['latitude'],resp.coords['longitude']);
+this.currentLatLng['positondeg']=bearing.toFixed(2); 
 this.rotateAnimation(bearing);
 this.orientation();
 

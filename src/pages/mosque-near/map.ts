@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import { Platform,ModalController } from 'ionic-angular';
-import { GetLocation } from '../../providers/getcurrentlocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 declare var google: any;
@@ -19,7 +19,7 @@ export class MapPage {
 destination: any =  [] // dest lat,long
 
   @ViewChild('mapCanvas') mapElement: ElementRef;
-  constructor(public platform: Platform,  public getLocation:GetLocation,private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public modalCtrl: ModalController) {
+  constructor(private geolocation: Geolocation, public platform: Platform,private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -28,10 +28,10 @@ destination: any =  [] // dest lat,long
   initMap() {
     let that=this;
     let mapEle = this.mapElement.nativeElement;
-    let location=this.getLocation.getCurrentLocation();
-    location.then(resp=>{
-     this.currentLatLng= resp;
-    var pyrmont = {lat: resp['latitude'], lng: resp['longitude']};
+    this.geolocation.getCurrentPosition().then(resp=>{
+     this.currentLatLng= resp.coords;
+
+    var pyrmont = {lat: this.currentLatLng['latitude'], lng: this.currentLatLng['longitude']};
       
      this.map = new google.maps.Map(mapEle, {
       center: pyrmont,
