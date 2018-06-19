@@ -90,7 +90,18 @@ $shadow-hover:0 14px 40px rgba(0,0,0,0.6), 0 10px 10px rgba(0,0,0,0.22);
     padding: 0;
     font-family: 'Open Sans', 'Roboto', sans-serif;
 }
-
-
-
+.fab[mini]{
+  display: inline-table;
+}
+ion-fab{
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.custom-input-t.fab[mini]{
+  width: 70px;
+  height: 40px;
+  line-height: 0px;
+  border-radius: unset;
+}
 }

@@ -1,3 +1,41 @@
 page-islamic-channel {
-
+    .live-channels ion-icon::after{
+    //     position: absolute;
+    // content: '';
+    // line-height: 10px;
+    // bottom: 0px;
+    // margin-left: -27px;
+    // background: #69bb7b;
+    // font-weight: bold;
+    // height: 15px;
+    // width: 15px;
+    // border-radius: 50%;  
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    width: 22px;
+    height: 18px;
+    -webkit-transform: rotate(45deg) skew(-5deg, -5deg);
+    transform: rotate(45deg) skew(-5deg, -5deg);
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    border-radius: 5px;
+    }
+    .live-channels ion-icon::before{
+    content: "";
+    width: 25px;
+    height: 26px;
+    border-left: 2px solid #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 18px;
+    left: 27px;
+    }
+    .item-md{
+        color: #434343;
+    background-color: rgba(226, 226, 226, 0.59);
+    font-weight: 500;
+    }
+    .button-clear-md{color: #a5a4a4;}
 }

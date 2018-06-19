@@ -69,9 +69,9 @@ page-calendar {
 .swiper-container-flip .swiper-wrapper {
     perspective: unset;
 }
-.public-event, .friend-event{position:absolute;height:5px;width:5px;border-radius:50%;bottom:0;left:0;right:0;margin:0px auto;}
-.public-event{background:#ff2366;left:10px}
-.friend-event{background:#8d4de8;right:5px}
+ .holiday-event{position:absolute;height:5px;width:5px;border-radius:50%;bottom:0;left:0;right:0;margin:0px auto;}
+
+.holiday-event{background:#5dff8f;right:5px}
 .event-bottom-head{border-bottom:1px solid #666;color:#fff}
 .big-size{bottom: auto;left: 8px; right: auto;margin: auto;top: 20px;height: 13px;width: 13px;}
 .event-bottom-head p{padding-left:20px}
@@ -80,4 +80,6 @@ page-calendar {
 h2{padding-right:5px}
 .friends-items .big-size{right:initial;top:initial;bottom:15px;left:initial;margin-left:10px}
 .calendar-main{background: #000}
+.arabic-day{font-size: 10px;font-weight: 300}
+.label-md{margin: 5px 8px 5px 0;}
 }

@@ -1,22 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Calendar
+      Islamic Calendar
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="calendar-main" padding>
+<ion-content class="calendar-main">
   <div class="calendar-header">
     <ion-row class="calendar-month">
-      <!--<ion-col col-2 (click)="goToLastMonth()"> <ion-icon name="arrow-dropleft-circle"></ion-icon></ion-col>
-      <ion-col col-8>{{currentMonth}} {{currentYear}}</ion-col>
-       <ion-col col-2 (click)="goToNextMonth()"> <ion-icon name="arrow-dropright"></ion-icon></ion-col>
-      -->
       <ion-slides effect="coverflow" slidesPerView="3" (ionSlideDrag)="slideDrag($event)" centeredSlides="true" initialSlide="{{this.date.getMonth()}}">
 
         <ion-slide *ngFor="let month of monthNames">
-          <h2>{{month}}</h2>
+          <h2>{{month.en}}</h2>
         </ion-slide>
       </ion-slides>
 
@@ -36,49 +32,44 @@
         <ion-col>Sa</ion-col>
       </ion-row>
       <ion-row class="calendar-date">
-        <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</ion-col>
-        <ion-col col-1 *ngFor="let day of daysInThisMonth" (tap)="events('public',day)">
+        <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month"></ion-col>
+        <ion-col col-1 *ngFor="let day of daysInThisMonth" (tap)="events(day)">
 
           <span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
-          <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+          <ng-template #otherDate class="otherDate">{{day.en}}</ng-template>
+          <div class="arabic-day" [ngStyle]="{'color':day.holidays ==true ? '#5dff8f' : '#e0e0e0' }">{{day.ar}}</div>
           <!-- <span *ngIf="checkeEvent(day,'public')" class="public-event"></span>
           <span *ngIf="checkeEvent(day,'private')" class="friend-event"></span> -->
 
         </ion-col>
-        <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</ion-col>
+        <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month"></ion-col>
       </ion-row>
     </ion-grid>
   </div>
-  <ion-row class="event-bottom-head">
+  <ion-row class="event-bottom-head" *ngIf="holidayes?.length > 0">
     <ion-col col-06>
-      <span class="friend-event big-size"></span>
-      <p> Friends only event</p>
-    </ion-col>
-    <ion-col col-06>
-      <span class="public-event big-size"></span>
-      <p>Public event</p>
+      <span class="holiday-event big-size"></span>
+      <p>List Of Holidays</p>
     </ion-col>
   </ion-row>
-  <!-- <ion-row>
+  <ion-row  *ngIf="holidayes?.length > 0">
     <ion-col col-12>
-      <ion-list no-margin class="friends-items" *ngIf="selectedDateInvites">
-        <ion-item-group *ngFor="let invite of selectedDateInvites">
-          <ion-item (tap)="toggleInvite(invite)">
-            <ion-avatar item-start>
-              <img [src]="invite.host.avatar" />
-            </ion-avatar>
-            <h2>{{invite.host.name}}</h2>
-            <h3 item-subtitle>{{this.activeDate}}
-              <span class="friend-event big-size" [ngClass]="{'friend-event' :invite.type=='private','public-event' :invite.type=='public'}"></span>
-            </h3>
-            <span item-end class="circle-act" [class.active]="true" (tap)="toggleInvite(invite)">
-              <ion-icon name="search" color="hypespotWhite"></ion-icon>
-            </span>
+      <ion-list no-margin class="friends-items">
+        <ion-item-group *ngFor="let event of holidayes">
+          <ion-item>
+            <h3>{{event.hijri['holidays'].join('')}}</h3>
+            <p item-subtitle>
+              {{event.hijri['day'] }}
+              {{event.hijri['month'].en }}
+              {{event.hijri['year'] }}
+              
+            </p>
+            
           </ion-item>
-          <place-details *ngIf="selectedInvite === invite && selectedInvite.place" [place]="selectedInvite.place"></place-details>
+         
         </ion-item-group>
       </ion-list>
     </ion-col>
-  </ion-row> -->
+  </ion-row>
 
 </ion-content>

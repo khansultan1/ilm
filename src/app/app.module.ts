@@ -35,7 +35,7 @@ import { TasbeehPage } from '../pages/tasbeeh/tasbeeh';
 import { HalalPlacesPage } from '../pages/halal-places/halal-places';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
-import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+import { ShowvideoPage } from '../pages/showvideo/showvideo';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -59,7 +59,8 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     TasbeehPage,
     HalalPlacesPage,
     CalendarPage,
-    IslamicChannelPage
+    IslamicChannelPage,
+    ShowvideoPage
   ],
   imports: [
     BrowserModule,
@@ -90,7 +91,8 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     TasbeehPage,
     HalalPlacesPage,
     CalendarPage,
-    IslamicChannelPage
+    IslamicChannelPage,
+    ShowvideoPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -103,8 +105,7 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     Diagnostic,
     LaunchNavigator,
     Geolocation,
-    NativeGeocoder,
-    StreamingMedia
+    NativeGeocoder
   ]
 })
 export class AppModule { }

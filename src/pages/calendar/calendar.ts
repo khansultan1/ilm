@@ -1,7 +1,7 @@
 
 import { Component, ViewChild } from "@angular/core";
-import { IonicPage, NavController, NavParams, Slides } from "ionic-angular";
-
+import { IonicPage, NavController, NavParams, Slides,LoadingController } from "ionic-angular";
+import { TimeTableData } from '../../providers/timetable-data';
 /**
  * Generated class for the CalendarPage page.
  *
@@ -20,38 +20,43 @@ export class CalendarPage {
   daysInThisMonth: any;
   daysInLastMonth: any;
   daysInNextMonth: any;
-  monthNames: string[];
+  monthNames: any[];
   selectedInvite: any;
-  currentMonth: any;
   currentYear: any;
   currentDate: any;
   lastDragEventToken: number;
   activeDate: any;
+  tdData:any;
+  eventList:any[];
+  holidayes:any[];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public confData: TimeTableData,
+    public loadingCtrl: LoadingController
   ) {}
 
   ionViewDidLoad() {
-
+    
+        
     this.date = new Date();
+    this.getSchedule(this.date.getMonth()+1,this.date.getFullYear());
+
     this.monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
+      {en:"January",ar:""},
+      {en:"February",ar:""},
+      {en:"March",ar:""},
+      {en:"April",ar:""},
+      {en:"May",ar:""},
+      {en:"June",ar:""},
+      {en:"July",ar:""},
+      {en:"August",ar:""},
+      {en:"September",ar:""},
+      {en:"October",ar:""},
+      {en:"November",ar:""},
+      {en:"December",ar:""}
     ];
-    this.currentMonth = this.monthNames[this.date.getMonth()];
-    this.getDaysOfMonth();
-    //this.getCalendarDetails(this.date.getMonth()+1, this.date.getFullYear());
+
   }
   slideChanged() {
     this.goToNextMonth();
@@ -91,8 +96,12 @@ export class CalendarPage {
       this.date.getMonth() + 1,
       0
     ).getDate();
+    console.log(thisNumOfDays);
     for (let i = 0; i < thisNumOfDays; i++) {
-      this.daysInThisMonth.push(i + 1);
+        var ar=this.tdData[i].hijri;
+        let date=ar.day+ ' '+ ar.month['ar'];
+        let holidays=ar.holidays.length>0;
+      this.daysInThisMonth.push({en:i + 1, ar:date, holidays:holidays});
     }
 
     var lastDayThisMonth = new Date(
@@ -119,32 +128,15 @@ export class CalendarPage {
     }
     this.getCalendarDetails(this.date.getMonth() + 1, this.date.getFullYear());
   }
-  // checkeEvent(day, type) {
-  //   let flag = false;
-  //   flag = this.currentMonthInvites.some((invite, index) => {
-  //     if (new Date(invite.datetime).getDate() == day && invite.type == type) {
-  //       return true;
-  //     }
-  //   });
-  //   return flag;
-  // }
-  /*
-goToLastMonth() {
-  this.date = new Date(this.date.getFullYear(), this.date.getMonth(), 0);
-  this.getDaysOfMonth();
-}
-
-*/
 
   goToNextMonth() {
-    this.currentMonth = this.monthNames[this.slides.getActiveIndex()];
-
     this.date = new Date(
       this.date.getFullYear(),
       this.slides.getActiveIndex() + 1,
       0
     );
-    this.getDaysOfMonth();
+    this.getSchedule( this.slides.getActiveIndex() + 1,this.date.getFullYear())
+    //this.getDaysOfMonth();
   
   }
   slideDrag(event?: any) {
@@ -152,7 +144,7 @@ goToLastMonth() {
       window.clearTimeout(this.lastDragEventToken);
     }
     this.lastDragEventToken = window.setTimeout(() => {
-      this.goToNextMonth();
+      this.getSchedule( this.slides.getActiveIndex() + 1,this.date.getFullYear())
 
       window.clearTimeout(this.lastDragEventToken);
       this.lastDragEventToken = 0;
@@ -162,9 +154,6 @@ goToLastMonth() {
 
   getCalendarDetails(month, year) {
     var data = { month: month, year: year };
-    //this.calendarModel=[{"id":30,"type":"private","host":{"user_id":21,"name":"ad","avatar":""},"datetime":"2018-04-04 00:03:00","place":{"place_id":7,"name":"The Blue Roof Club","logo":"https:\/\/maps.gstatic.com\/mapfiles\/place_api\/icons\/bar-71.png"}}]
-
- 
   }
   toggleInvite(invite) {
     if (this.selectedInvite === invite) {
@@ -181,7 +170,32 @@ goToLastMonth() {
    }else{
     this.slides.slidePrev();
    }
-   this.currentMonth=this.slides.getActiveIndex()+1;
    this.goToNextMonth();
+  }
+  getHolidays(){
+    this.holidayes=this.tdData.filter((a,b)=>{
+      if(a.hijri.holidays.length>0)
+      return a.hijri.holidays;
+    });
+    console.log(this.holidayes);
+  }
+  getSchedule(month,year) {  
+    let loading = this.loadingCtrl.create();
+    loading.present();  
+    this.confData.getCalendar(month,year).subscribe(data =>{
+      this.tdData=data.data;
+ 
+      this.getDaysOfMonth();
+      this.getHolidays();
+      loading.dismiss();  
+   });
+
+  }
+  events(day){
+
+    this.eventList=this.holidayes.filter((a,b)=>{
+      return parseInt(day.en)==parseInt(a.gregorian['day']);
+    });
+    console.log(this.eventList);
   }
 }

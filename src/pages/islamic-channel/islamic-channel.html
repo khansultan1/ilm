@@ -7,12 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>islamic-channel</ion-title>
+    <ion-title>Islamic Live Channels</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="live-channels">
+    <ion-list>
+        <button ion-item  *ngFor="let channel of channelList" (click)="openChannel(channel.channelId)">
+            <ion-icon item-start><img [src]="channel.icon" /></ion-icon>
+          {{channel.name}}
+          <button ion-button clear item-end>Watch</button>
+        </button>  
+      </ion-list>
 
 </ion-content>

@@ -26,6 +26,11 @@ export class TimeTableData {
         .map(this.processData, this);
     }
   }
+  getCalendar(month,year){
+   
+      return this.http.get('http://api.aladhan.com/gToHCalendar/'+month+'/'+year)
+        .map(this.processData, this);
+  }
 
   processData(data: any) {
     // just some good 'ol JS fun with objects and arrays
