@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
-import { NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController,NavController } from 'ionic-angular';
 import { TimeTableData } from '../../providers/timetable-data';
+import { SettingsPage } from '../settings/settings';
+import { TimepreferencesPage } from '../timepreferences/timepreferences';
 @Component({
   selector: 'page-schedule-filter',
   templateUrl: 'schedule-filter.html'
@@ -12,7 +13,8 @@ export class ScheduleFilterPage {
   constructor(
     public confData: TimeTableData,
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public navCtrl:NavController
   ) {
     // passed in array of track names that should be excluded (unchecked)
     let excludedTrackNames = this.navParams.data;
@@ -46,5 +48,11 @@ export class ScheduleFilterPage {
     // using the injected ViewController this page
     // can "dismiss" itself and pass back data
     this.viewCtrl.dismiss(data);
+  }
+  settingsPage(){
+    this.navCtrl.push(SettingsPage);
+  }
+  timePreference(){
+    this.navCtrl.push(TimepreferencesPage);
   }
 }

@@ -36,6 +36,8 @@ import { HalalPlacesPage } from '../pages/halal-places/halal-places';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
 import { ShowvideoPage } from '../pages/showvideo/showvideo';
+import { SettingsPage } from '../pages/settings/settings';
+import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -60,7 +62,9 @@ import { ShowvideoPage } from '../pages/showvideo/showvideo';
     HalalPlacesPage,
     CalendarPage,
     IslamicChannelPage,
-    ShowvideoPage
+    ShowvideoPage,
+    SettingsPage,
+    TimepreferencesPage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,9 @@ import { ShowvideoPage } from '../pages/showvideo/showvideo';
     HalalPlacesPage,
     CalendarPage,
     IslamicChannelPage,
-    ShowvideoPage
+    ShowvideoPage,
+    SettingsPage,
+    TimepreferencesPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

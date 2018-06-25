@@ -1,0 +1,85 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Application Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-label>
+     Map near by radius
+      <ion-badge color="primary">{{radiusValue}} km</ion-badge>
+    </ion-label>
+    <ion-range name="test" min="1" max="10" step="2"
+               [(ngModel)]="radiusValue"
+               (ionChange)="onZoomRadius($event)">
+    </ion-range>
+  
+    <ion-buttons no-margin text-center>
+      <button type="button" ion-button *ngFor="let zoomRadius of zoomLevels"
+              (click)="resetZoomRadius(zoomRadius)"
+              [class.active]="zoomRadius === radiusValue"
+              outline round small color="dark">
+        {{zoomRadius}} km</button>
+    </ion-buttons>
+  </div>
+
+  <div>
+    <ion-label>
+     Map zoom level    <ion-badge color="primary">{{zoomrangeValue}}</ion-badge>
+    </ion-label>
+    <ion-range name="test" min="5" max="20" step="5"
+               [(ngModel)]="zoomrangeValue"
+               (ionChange)="onZoomRange($event)">
+    </ion-range>
+    <ion-buttons>
+    <button type="button" ion-button *ngFor="let zoomRange of zoomRanges"
+              (click)="resetZoomRange(zoomRange)"
+              [class.active]="zoomRange === zoomrangeValue"
+              outline round small color="dark">
+        {{zoomRange}}</button>
+    </ion-buttons>
+  </div>
+
+
+  <ion-list class="prayer-settings">
+    <ion-item>
+      <ion-label>Prayer Method</ion-label>
+      <ion-select [(ngModel)]="method" submitText="OK" cancelText="Cancel" (ionChange)="saveMethod()">
+        <ion-option value="0">Shia Ithna-Ansari</ion-option>
+        <ion-option value="1">University of Islamic Sciences, Karachi</ion-option>
+        <ion-option value="2">Islamic Society of North America</ion-option>
+        <ion-option value="3">Muslim World League</ion-option>
+        <ion-option value="4"> Umm Al-Qura University, Makkah</ion-option>
+        <ion-option value="5">Egyptian General Authority of Survey</ion-option>
+  
+        <ion-option value="7">Institute of Geophysics, University of Tehran</ion-option>
+        <ion-option value="8">Gulf Region</ion-option>
+        <ion-option value="9">Kuwait</ion-option>
+        <ion-option value="10">Qatar</ion-option>
+        <ion-option value="11"> Majlis Ugama Islam Singapura, Singapore</ion-option>
+        <ion-option value="12">Union Organization islamic de France</ion-option>
+        <ion-option value="13">Diyanet İşleri Başkanlığı, Turkey</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Juristic School (only affects Asr calculation)</ion-label>
+      <ion-select [(ngModel)]="j_school" (ionChange)="saveJSchool()">
+        <ion-option value="0">Shafi, Hanbali, Maliki, Shia and all others</ion-option>
+        <ion-option value="1">Hanafi</ion-option>
+       
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>

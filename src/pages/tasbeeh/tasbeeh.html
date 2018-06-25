@@ -15,9 +15,9 @@
 
 <ion-content class="main-body">
     <ion-fab>
-        <button ion-fab mini (click)="setCount(33)">33</button>
-        <button ion-fab mini (click)="setCount(34)">34</button>
-        <button ion-fab mini (click)="setCount(100)">100</button>
+        <button ion-fab mini (click)="setCount(33)" [ngClass]="{'active':tCount === 33}">33</button>
+        <button ion-fab mini (click)="setCount(34)" [ngClass]="{'active':tCount === 34}">34</button>
+        <button ion-fab mini (click)="setCount(100)" [ngClass]="{'active':tCount === 100}">100</button>
         <button ion-fab mini class="custom-input-t" [(ngModel)]="tCount"><ion-input placeholder="Custom"></ion-input></button>
       </ion-fab>
 

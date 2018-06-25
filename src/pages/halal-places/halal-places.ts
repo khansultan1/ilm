@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
+
+import {defaultSettings} from '../../model/defaultsettings';
 declare var google: any;
 /**
  * Generated class for the HalalPlacesPage page.
@@ -22,11 +24,13 @@ export class HalalPlacesPage {
   placeObj:any={}
   source: any = [] // source lat,long
   destination: any =  [] // dest lat,long
+  default:any;
   @ViewChild('halalplace') mapElement: ElementRef;
   constructor(public navCtrl: NavController, private modalCtrl:ModalController, private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public navParams: NavParams, private geolocation: Geolocation) {
   }
 
   ionViewDidLoad() {
+    this.default=new defaultSettings().settings;
     this.initMap();
 }
 initMap() {
@@ -39,7 +43,7 @@ var pyrmont = {lat: this.currentLatLng['latitude'], lng: this.currentLatLng['lon
   
  this.map = new google.maps.Map(mapEle, {
   center: pyrmont,
-  zoom: 15
+  zoom: localStorage.zoomrange ? parseInt(localStorage.zoomrange) : this.default.zoomLevel
 });
 
 let infowindow = new google.maps.InfoWindow();
@@ -47,7 +51,7 @@ let infowindow = new google.maps.InfoWindow();
 
 var request = {
   location:pyrmont,
-  radius: '5000',
+  radius: localStorage.zoomradius? parseInt(localStorage.zoomradius)*1000 :this.default.mapRadius,
   query: 'halal restaurants'
 };
 

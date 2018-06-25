@@ -23,7 +23,7 @@
         
         <ion-card-header>
             <ion-icon name="pin"></ion-icon>
-            <span>{{locationData.locality}}  {{locationData.subAdministrativeArea}}  {{locationData.administrativeArea}}</span> 
+            <span>{{locationData.locality ? locationData.locality :'Loading your location'}}  {{locationData.subAdministrativeArea}}  {{locationData.administrativeArea}}</span> 
         </ion-card-header>
       
         <ion-card-content>

@@ -16,35 +16,25 @@
 
 <ion-content class="outer-content">
   <ion-list>
-      <button ion-item>
-          <ion-icon name="alarm" item-start></ion-icon>
-          Alarm Settings
+      <button ion-item (click)="settingsPage()">
+          <ion-icon name="settings" item-start ></ion-icon>
+          Application Settings
      
         </button>
 
-      <button ion-item>
-          <ion-icon name="calendar" item-start></ion-icon>
-         Islamic Calendar
-         
-        </button>
+      
   </ion-list>
+
+
 
   <ion-list>
       <button ion-item>
-          <ion-icon name="map" item-start></ion-icon>
-          Map Settings
-        
+          <ion-icon name="star" item-start></ion-icon>
+          Favourite
+     
         </button>
 
-      <button ion-item>
-          <ion-icon name="brush" item-start></ion-icon>
-         Color Theme
-         
-      </button>
 
-  </ion-list>
-
-  <ion-list>
       <button ion-item>
           <ion-icon name="chatbubbles" item-start></ion-icon>
          Feeback

@@ -7,23 +7,26 @@ import { UserData } from './user-data';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
-
-
+import { Storage } from '@ionic/storage';
+import {defaultSettings} from '../model/defaultsettings';
 @Injectable()
 export class TimeTableData {
   data: any;
 
-  constructor(public http: Http, public user: UserData) { }
+  constructor(public http: Http, public user: UserData, public storage: Storage) { }
 
   load(lat,long): any {
     
     if (this.data) {
       return Observable.of(this.data);
     } else {
-
-
-      return this.http.get('http://api.aladhan.com/v1/calendar?latitude='+lat+'&longitude='+long)
+    
+      let method=localStorage.method ?localStorage.method :new defaultSettings().settings.method;
+      let jschool=localStorage.jschool ?localStorage.jschool :new defaultSettings().settings.j_school;
+      return this.http.get('http://api.aladhan.com/v1/calendar?latitude='+lat+'&longitude='+long+'&method='+method+'&school='+jschool)
         .map(this.processData, this);
+      
+     
     }
   }
   getCalendar(month,year){

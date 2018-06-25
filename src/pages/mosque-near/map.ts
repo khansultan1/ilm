@@ -3,6 +3,7 @@ import { Platform,ModalController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
+import {defaultSettings} from '../../model/defaultsettings';
 declare var google: any;
 
 
@@ -17,13 +18,18 @@ export class MapPage {
   placeObj:any={}
   source: any = [] // source lat,long
 destination: any =  [] // dest lat,long
-
+default:any;
   @ViewChild('mapCanvas') mapElement: ElementRef;
   constructor(private geolocation: Geolocation, public platform: Platform,private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
+      this.default=new defaultSettings().settings;
         this.initMap();
+  }
+  ionViewWillEnter(){
+    this.default=new defaultSettings().settings;
+    this.initMap();
   }
   initMap() {
     let that=this;
@@ -35,14 +41,14 @@ destination: any =  [] // dest lat,long
       
      this.map = new google.maps.Map(mapEle, {
       center: pyrmont,
-      zoom: 15
+      zoom: localStorage.zoomrange ? parseInt(localStorage.zoomrange) : this.default.zoomLevel
     });
 
    let infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch({
       location: pyrmont,
-      radius: 3000,
+      radius:localStorage.zoomradius? (parseInt(localStorage.zoomradius)*1000) :this.default.mapRadius,
       type: ['mosque']
     }, callback);
   })

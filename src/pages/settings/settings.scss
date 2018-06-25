@@ -1,0 +1,14 @@
+page-settings {
+    .button-round-md{padding: 0 1.6rem;}
+    .label-md{color:rgb(109, 109, 109)}
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md, .alert-md .alert-radio-label{
+        color: #fafafaeb;
+    }
+  
+    .active{
+        background:#fceeee;
+    }
+    .range-md{padding:0}
+    .list.list-md{margin-top:15px;}
+ 
+}

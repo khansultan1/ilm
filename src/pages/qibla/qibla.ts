@@ -47,9 +47,10 @@ export class QiblaPage {
       (data: DeviceOrientationCompassHeading) => {
 
         let directionCont = this.directionCont.nativeElement;
-        directionCont.style.transform = "rotate("+data.trueHeading+"deg)";
-        var bearing = this.getBearing(this.klat,this.klong,this.currentLatLng['latitude'],this.currentLatLng['longitude']);
-                      this.rotateAnimation(bearing);
+          let heading=360-Math.round(data.trueHeading);
+        directionCont.style.transform = "rotate("+heading+"deg)";
+        //var bearing = this.getBearing(this.klat,this.klong,this.currentLatLng['latitude'],this.currentLatLng['longitude']);
+                      //this.rotateAnimation(bearing);
                   
                                 
       });

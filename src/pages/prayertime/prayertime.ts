@@ -16,12 +16,15 @@ export class PrayertimePage {
   activeDateEn:any={};
   confDate: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public confData: TimeTableData,  public modalCtrl: ModalController, public geolocation:Geolocation  ) {
-    this.getSchedule();
+   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrayertimePage');
   
+  }
+  ionViewWillEnter(){
+    this.getSchedule();
   }
   getSchedule() {
     //let location=this.getLocation.getCurrentLocation();

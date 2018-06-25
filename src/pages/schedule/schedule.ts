@@ -51,34 +51,37 @@ export class SchedulePage {
     private nativeGeocoder: NativeGeocoder,
     private geolocation: Geolocation
   ) {  
-        let errorCallback = (e) => {
-          this.locationAccuracy.canRequest().then((canRequest: boolean) => {
-    
-            if(canRequest) {
-              // the accuracy option will be ignored by iOS
-              this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
-                () => {
-                console.log('Request successful')
-               
-              },
-                error => console.log('Error requesting location permissions', error)
-              );
-            }
-          })
-        };
-      let successCallback = (isAvailable) => {
-     console.log('Is available? ' + isAvailable);
-     if(isAvailable){
-      this.getCurrentLocations();
-     }else{
-      this.enableLocation();
-     }
-
-    };
-        this.diagnostic.isLocationEnabled().then(successCallback).catch(errorCallback);
+        
   }
   ionViewDidLoad() {
-    this.getQuotes();
+    
+  }
+  ionViewWillEnter(){
+    let errorCallback = (e) => {
+      this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+
+        if(canRequest) {
+          // the accuracy option will be ignored by iOS
+          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+            () => {
+            console.log('Request successful')
+           
+          },
+            error => console.log('Error requesting location permissions', error)
+          );
+        }
+      })
+    };
+  let successCallback = (isAvailable) => {
+ console.log('Is available? ' + isAvailable);
+ if(isAvailable){
+  this.getCurrentLocations();
+ }else{
+  this.enableLocation();
+ }
+ this.getQuotes();
+};
+    this.diagnostic.isLocationEnabled().then(successCallback).catch(errorCallback);
   }
   enableLocation()
   {
@@ -173,7 +176,7 @@ export class SchedulePage {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.getSchedule(resp.coords['latitude'], resp.coords['longitude']);
       this.nativeGeocoder.reverseGeocode(resp.coords['latitude'], resp.coords['longitude'])
-    .then((result: NativeGeocoderReverseResult) =>{
+    .then((result) =>{
         console.log(result);
       this.locationData=result[0];
        console.log(this.locationData);
