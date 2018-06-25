@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController,NavController } from 'ionic-angular';
 import { TimeTableData } from '../../providers/timetable-data';
 import { SettingsPage } from '../settings/settings';
+import { AboutPage } from '../about/about';
 import { TimepreferencesPage } from '../timepreferences/timepreferences';
 @Component({
   selector: 'page-schedule-filter',
@@ -54,5 +55,8 @@ export class ScheduleFilterPage {
   }
   timePreference(){
     this.navCtrl.push(TimepreferencesPage);
+  }
+  aboutPage(){
+    this.navCtrl.push(AboutPage)
   }
 }

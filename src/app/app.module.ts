@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { IslamicApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
-import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/mosque-near/map';
@@ -45,7 +44,6 @@ import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
     AccountPage,
     LoginPage,
     MapPage,
-    PopoverPage,
     SchedulePage,
     ScheduleFilterPage,
     SignupPage,
@@ -79,7 +77,6 @@ import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
     AccountPage,
     LoginPage,
     MapPage,
-    PopoverPage,
     SchedulePage,
     ScheduleFilterPage,
     SignupPage,

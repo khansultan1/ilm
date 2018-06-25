@@ -14,20 +14,16 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
   templateUrl: 'showvideo.html',
 })
 export class ShowvideoPage {
-  video: any = {
-    url: 'https://www.youtube.com/embed/MLleDRkSuvk',
-    title: 'Awesome video'
-};
-
   trustedVideoUrl: SafeResourceUrl;
   constructor(public navCtrl: NavController, public navParams: NavParams,private domSanitizer: DomSanitizer) {
-    this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(this.video.url);
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShowvideoPage');
-   var channel= this.navParams.get('channelId');
-   console.log(channel);
+   let channel= this.navParams.get('channelId');
+   let url='https://www.youtube.com/embed/';
+   this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(url+channel);
   }
 
 }
