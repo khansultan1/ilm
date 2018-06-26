@@ -11,7 +11,7 @@
   </ion-navbar>
 
 </ion-header>
- <iframe *ngIf="liveMecca" #iframeVideo width="100%" height="315" [src]="trustedVideoUrl ? trustedVideoUrl : null" (load)="trustedVideoUrl ? handleIFrameLoadEvent() : null" frameborder="0" allowfullscreen></iframe>
-<ion-content >
 
+<ion-content >
+  <iframe  width="100%" height="315" [src]="trustedVideoUrl" frameborder="0" allowfullscreen></iframe>
 </ion-content>
