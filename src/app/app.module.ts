@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { IslamicApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
-import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/mosque-near/map';
 import { SchedulePage } from '../pages/schedule/schedule';
@@ -37,11 +36,11 @@ import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
 import { ShowvideoPage } from '../pages/showvideo/showvideo';
 import { SettingsPage } from '../pages/settings/settings';
 import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
+import { FeedbackPage } from '../pages/feedback/feedback';
 @NgModule({
   declarations: [
     IslamicApp,
     AboutPage,
-    AccountPage,
     LoginPage,
     MapPage,
     SchedulePage,
@@ -62,7 +61,8 @@ import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
     IslamicChannelPage,
     ShowvideoPage,
     SettingsPage,
-    TimepreferencesPage
+    TimepreferencesPage,
+    FeedbackPage
   ],
   imports: [
     BrowserModule,
@@ -74,7 +74,6 @@ import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
   entryComponents: [
     IslamicApp,
     AboutPage,
-    AccountPage,
     LoginPage,
     MapPage,
     SchedulePage,
@@ -95,7 +94,8 @@ import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
     IslamicChannelPage,
     ShowvideoPage,
     SettingsPage,
-    TimepreferencesPage
+    TimepreferencesPage,
+    FeedbackPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

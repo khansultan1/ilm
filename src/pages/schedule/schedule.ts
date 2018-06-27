@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { AlertController, App, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
 import { UserData } from '../../providers/user-data';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { PrayertimePage } from '../prayertime/prayertime';
@@ -49,7 +49,8 @@ export class SchedulePage {
     private locationAccuracy: LocationAccuracy,
     public confData: TimeTableData,
     private nativeGeocoder: NativeGeocoder,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private socialSharing: SocialSharing
   ) {  
         
   }
@@ -153,15 +154,20 @@ export class SchedulePage {
    }
 
 
-  openSocial(network: string, fab: FabContainer) {
-    let loading = this.loadingCtrl.create({
-      content: `Posting to ${network}`,
-      duration: (Math.random() * 1000) + 500
-    });
-    loading.onWillDismiss(() => {
-      fab.close();
-    });
-    loading.present();
+  // openSocial(network: string, fab: FabContainer) {
+  //   let loading = this.loadingCtrl.create({
+  //     content: `Posting to ${network}`,
+  //     duration: (Math.random() * 1000) + 500
+  //   });
+  //   loading.onWillDismiss(() => {
+  //     fab.close();
+  //   });
+  //   loading.present();
+  // }
+  shareApp(){
+  console.log("Share ...");
+  this.socialSharing.share("Ilm-e-Islam", "App", "", "");
+
   }
   getQuotes(){
     let quotes= new Quotes;

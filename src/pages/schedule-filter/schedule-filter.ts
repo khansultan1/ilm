@@ -4,6 +4,8 @@ import { TimeTableData } from '../../providers/timetable-data';
 import { SettingsPage } from '../settings/settings';
 import { AboutPage } from '../about/about';
 import { TimepreferencesPage } from '../timepreferences/timepreferences';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { FeedbackPage } from '../feedback/feedback';
 @Component({
   selector: 'page-schedule-filter',
   templateUrl: 'schedule-filter.html'
@@ -15,7 +17,8 @@ export class ScheduleFilterPage {
     public confData: TimeTableData,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public navCtrl:NavController
+    public navCtrl:NavController,
+    private socialSharing: SocialSharing
   ) {
     // passed in array of track names that should be excluded (unchecked)
     let excludedTrackNames = this.navParams.data;
@@ -58,5 +61,12 @@ export class ScheduleFilterPage {
   }
   aboutPage(){
     this.navCtrl.push(AboutPage)
+  }
+  shareApp(){
+    this.socialSharing.share("Ilm-e-Islam", "App", "", "");
+  }
+  feedbackPage(){
+    this.navCtrl.push(FeedbackPage);
+    
   }
 }

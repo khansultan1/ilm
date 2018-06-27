@@ -22,30 +22,30 @@ export class IslamicChannelPage {
     icon:'./assets/img/kaaba.png'
   },
   {
-  channelId:'CZ1BnB8E0vY',
+  channelId:'O430xiwoMzE',
     name:'Live Madina',
     url:'',
     icon:'./assets/img/madina.png'
   },
-  {
-  channelId:'b9SqXdWllkQ',
-  name:'Madni Channel',
-  url:'',
-  icon:'./assets/img/madani.jpg'
-  },
-  {
-  channelId:'siFtHoPcdio',
-  name:'MTA TV',
-  url:'',
-  icon:'./assets/img/mta.jpg'
-  },
+  // {
+  // channelId:'b9SqXdWllkQ',
+  // name:'Madni Channel',
+  // url:'',
+  // icon:'./assets/img/madani.jpg'
+  // },
+  // {
+  // channelId:'siFtHoPcdio',
+  // name:'MTA TV',
+  // url:'',
+  // icon:'./assets/img/mta.jpg'
+  // },
 
-  {
-    channelId:'tNDUyKiAGE',
-    name:'Eman Channel',
-    url:'',
-    icon:'./assets/img/eman.jpg'
-    },
+  // {
+  //   channelId:'tNDUyKiAGE',
+  //   name:'Eman Channel',
+  //   url:'',
+  //   icon:'./assets/img/eman.jpg'
+  //   },
   
 ]
   constructor(public navCtrl: NavController, public navParams: NavParams) {
