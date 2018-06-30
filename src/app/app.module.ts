@@ -14,7 +14,7 @@ import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { ZakatcalcPage } from '../pages/zakatcalc/zakatcalc';
-import { SupportPage } from '../pages/support/support';
+
 import { DuaPage } from '../pages/dua/dua';
 import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
@@ -36,7 +36,8 @@ import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
 import { ShowvideoPage } from '../pages/showvideo/showvideo';
 import { SettingsPage } from '../pages/settings/settings';
 import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
-import { FeedbackPage } from '../pages/feedback/feedback';
+import { FeedbackPage, FormsPage  } from '../pages/feedback/feedback';
+import { SocialSharing } from '@ionic-native/social-sharing';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -48,7 +49,6 @@ import { FeedbackPage } from '../pages/feedback/feedback';
     SignupPage,
     TabsPage,
     ZakatcalcPage,
-    SupportPage,
     PrayertimePage,
     QiblaPage,
     DuaPage,
@@ -62,7 +62,8 @@ import { FeedbackPage } from '../pages/feedback/feedback';
     ShowvideoPage,
     SettingsPage,
     TimepreferencesPage,
-    FeedbackPage
+    FeedbackPage,
+    FormsPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +82,6 @@ import { FeedbackPage } from '../pages/feedback/feedback';
     SignupPage,
     TabsPage,
     ZakatcalcPage,
-    SupportPage,
     PrayertimePage,
     QiblaPage,
     DuaPage,
@@ -95,7 +95,8 @@ import { FeedbackPage } from '../pages/feedback/feedback';
     ShowvideoPage,
     SettingsPage,
     TimepreferencesPage,
-    FeedbackPage
+    FeedbackPage,
+    FormsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -108,7 +109,8 @@ import { FeedbackPage } from '../pages/feedback/feedback';
     Diagnostic,
     LaunchNavigator,
     Geolocation,
-    NativeGeocoder
+    NativeGeocoder,
+    SocialSharing
   ]
 })
 export class AppModule { }

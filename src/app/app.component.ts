@@ -1,19 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform, NavController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { AboutPage } from '../pages/about/about';
-import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/mosque-near/map';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { SchedulePage } from '../pages/schedule/schedule';
-import { SupportPage } from '../pages/support/support';
 import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
-
-
+import { DuaPage } from '../pages/dua/dua';
+import { NameofallahPage } from '../pages/nameofallah/nameofallah';
+import { TasbeehPage } from '../pages/tasbeeh/tasbeeh';
+import { ZakatcalcPage } from '../pages/zakatcalc/zakatcalc';
+import { HalalPlacesPage } from '../pages/halal-places/halal-places';
+import { CalendarPage } from '../pages/calendar/calendar';
+import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
+import { PrayertimePage } from '../pages/prayertime/prayertime';
 export interface PageInterface {
   title: string;
   name: string;
@@ -42,13 +46,11 @@ export class IslamicApp {
     { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
   ];
   loggedInPages: PageInterface[] = [
-    { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
-    { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
+ 
     { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
   ];
   loggedOutPages: PageInterface[] = [
     { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
-    { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
     { title: 'Signup', name: 'SignupPage', component: SignupPage, icon: 'person-add' }
   ];
   rootPage: any;
@@ -170,4 +172,30 @@ export class IslamicApp {
     }
     return;
   }
+  goToPrayterTime(){
+    this.nav.push(PrayertimePage);
+   
+    }
+    goToDuaPage(){
+      this.nav.push(DuaPage);
+    }
+    gotoNamepage(){
+      this.nav.push(NameofallahPage);
+    }
+    gotoTasbeeh(){
+      this.nav.push(TasbeehPage);
+    }
+    goToZakatPage(){
+      this.nav.push(ZakatcalcPage);
+    }
+    gotohalalPlace(){
+      this.nav.push(HalalPlacesPage);
+    }
+    gotoCalendar(){
+      this.nav.push(CalendarPage);
+    }
+    gotoIslamicChannel(){
+      this.nav.push(IslamicChannelPage);
+      
+    }
 }
