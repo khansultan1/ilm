@@ -12,7 +12,8 @@ import {defaultSettings} from '../model/defaultsettings';
 @Injectable()
 export class TimeTableData {
   data: any;
-
+  surah:any;
+  selectedSurah:any;
   constructor(public http: Http, public user: UserData, public storage: Storage) { }
 
   load(lat,long): any {
@@ -36,105 +37,34 @@ export class TimeTableData {
   }
 
   processData(data: any) {
-    // just some good 'ol JS fun with objects and arrays
-    // build up the data by linking speakers to sessions
     return  this.data = data.json();
-/*
-    this.data.tracks = [];
-
-    // loop through each day in the schedule
-    this.data.schedule.forEach((day: any) => {
-      // loop through each timeline group in the day
-      day.groups.forEach((group: any) => {
-        // loop through each session in the timeline group
-        group.sessions.forEach((session: any) => {
-          session.speakers = [];
-          if (session.speakerNames) {
-            session.speakerNames.forEach((speakerName: any) => {
-              let speaker = this.data.speakers.find((s: any) => s.name === speakerName);
-              if (speaker) {
-                session.speakers.push(speaker);
-                speaker.sessions = speaker.sessions || [];
-                speaker.sessions.push(session);
-              }
-            });
-          }
-
-          if (session.tracks) {
-            session.tracks.forEach((track: any) => {
-              if (this.data.tracks.indexOf(track) < 0) {
-                this.data.tracks.push(track);
-              }
-            });
-          }
-        });
-      });
-    });
-
-    return this.data;
-    */
   }
-
-
-  filterSession(session: any, queryWords: string[], excludeTracks: any[], segment: string) {
-
-    let matchesQueryText = false;
-    if (queryWords.length) {
-      // of any query word is in the session name than it passes the query test
-      queryWords.forEach((queryWord: string) => {
-        if (session.name.toLowerCase().indexOf(queryWord) > -1) {
-          matchesQueryText = true;
-        }
-      });
+  processSurah(data:any){
+    return  this.surah = data.json();
+  }
+  getSurah(){
+    if (this.surah) {
+      return Observable.of(this.surah);
     } else {
-      // if there are no query words then this session passes the query test
-      matchesQueryText = true;
+  
+      return this.http.get('http://api.alquran.cloud/surah')
+        .map(this.processSurah, this);
+      
+     
     }
-
-    // if any of the sessions tracks are not in the
-    // exclude tracks then this session passes the track test
-    let matchesTracks = false;
-    session.tracks.forEach((trackName: string) => {
-      if (excludeTracks.indexOf(trackName) === -1) {
-        matchesTracks = true;
-      }
-    });
-
-    // if the segement is 'favorites', but session is not a user favorite
-    // then this session does not pass the segment test
-    let matchesSegment = false;
-    if (segment === 'favorites') {
-      if (this.user.hasFavorite(session.name)) {
-        matchesSegment = true;
-      }
+  }
+  processSelected(data:any){
+    return  this.selectedSurah = data.json();
+  }
+  getSurahFrom(surahNumber:any, language, from){
+    if (this.selectedSurah) {
+      return Observable.of(this.selectedSurah);
     } else {
-      matchesSegment = true;
+  
+      return this.http.get('http://api.alquran.cloud/surah/'+surahNumber+'/'+language+'.'+from)
+        .map(this.processSurah, this);
+      
+     
     }
-
-    // all tests must be true if it should not be hidden
-    session.hide = !(matchesQueryText && matchesTracks && matchesSegment);
   }
-
-  getSpeakers() {
-    // return this.load().map((data: any) => {
-    //   return data.speakers.sort((a: any, b: any) => {
-    //     let aName = a.name.split(' ').pop();
-    //     let bName = b.name.split(' ').pop();
-    //     return aName.localeCompare(bName);
-    //   });
-    // });
-  }
-
-  getTracks() {
-    // return this.load().map((data: any) => {
-    //   return data.tracks.sort();
-    // });
-  }
-
-  getMap() {
-    // return this.load().map((data: any) => {
-    //   return data.map;
-    // });
-  }
-
 }

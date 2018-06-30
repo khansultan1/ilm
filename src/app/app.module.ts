@@ -38,6 +38,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
 import { FeedbackPage, FormsPage  } from '../pages/feedback/feedback';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { QuranPage  } from '../pages/quran/quran';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -63,7 +64,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     SettingsPage,
     TimepreferencesPage,
     FeedbackPage,
-    FormsPage
+    FormsPage,
+    QuranPage
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     SettingsPage,
     TimepreferencesPage,
     FeedbackPage,
-    FormsPage
+    FormsPage,
+    QuranPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

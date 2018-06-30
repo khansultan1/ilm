@@ -67,6 +67,14 @@
     }
   }
 }
+@font-face {
+  font-family: 'Uthmani';
+  src: url("//cdn.alquran.cloud/public/fonts/uthman_tn09.otf") format("opentype");
+}
+
+.arabic-text {
+font-family: 'Uthmani', serif;
+}
 .toolbar-title-md {
   padding: 0 12px;
   font-size: 2rem;
@@ -312,3 +320,4 @@ blockquote{font-size:1.5em;}
   .alert-radio-label{
     color: #fafafaeb !important;
 }
+.alert-radio-icon{border-color: #45dbc7 !important;}

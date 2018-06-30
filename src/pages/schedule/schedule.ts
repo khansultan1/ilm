@@ -17,6 +17,7 @@ import { ZakatcalcPage } from '../zakatcalc/zakatcalc';
 import { HalalPlacesPage } from '../halal-places/halal-places';
 import { CalendarPage } from '../calendar/calendar';
 import { IslamicChannelPage } from '../islamic-channel/islamic-channel';
+import { QuranPage } from '../quran/quran';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
@@ -235,6 +236,10 @@ export class SchedulePage {
   }
   gotoIslamicChannel(){
     this.navCtrl.push(IslamicChannelPage);
+    
+  }
+  goToQuraanPage(){
+    this.navCtrl.push(QuranPage);
     
   }
 }
