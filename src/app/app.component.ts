@@ -18,6 +18,8 @@ import { HalalPlacesPage } from '../pages/halal-places/halal-places';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
 import { PrayertimePage } from '../pages/prayertime/prayertime';
+import { QuranPage } from '../pages/quran/quran';
+import { Network } from '@ionic-native/network';
 export interface PageInterface {
   title: string;
   name: string;
@@ -63,7 +65,8 @@ export class IslamicApp {
     public platform: Platform,
     public confData: TimeTableData,
     public storage: Storage,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public network: Network
   ) {
 
     
@@ -150,9 +153,18 @@ export class IslamicApp {
         if (this.platform.is('ios')) {
           // change 000 to whatever you need
            window['plugins'].webviewcolor.change('#000000');
-           console.log ("webview changed --->");
         }
       })
+
+      let disconnectSub = this.network.onDisconnect().subscribe(() => {
+        console.log('you are offline');
+        alert("Please connect to the internet");
+      });
+      
+      let connectSub = this.network.onConnect().subscribe(()=> {
+        console.log('you are online');
+      });
+
     });
   }
 
@@ -174,28 +186,38 @@ export class IslamicApp {
   }
   goToPrayterTime(){
     this.nav.push(PrayertimePage);
-   
+    this.menu.close();
     }
     goToDuaPage(){
       this.nav.push(DuaPage);
+      this.menu.close();
     }
     gotoNamepage(){
       this.nav.push(NameofallahPage);
+      this.menu.close();
     }
     gotoTasbeeh(){
       this.nav.push(TasbeehPage);
+      this.menu.close();
     }
     goToZakatPage(){
       this.nav.push(ZakatcalcPage);
+      this.menu.close();
     }
     gotohalalPlace(){
       this.nav.push(HalalPlacesPage);
+      this.menu.close();
     }
     gotoCalendar(){
       this.nav.push(CalendarPage);
+      this.menu.close();
     }
     gotoIslamicChannel(){
       this.nav.push(IslamicChannelPage);
-      
+      this.menu.close();
+    }
+    quranPage(){
+      this.nav.push(QuranPage);
+      this.menu.close();
     }
 }

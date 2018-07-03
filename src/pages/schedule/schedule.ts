@@ -56,7 +56,7 @@ export class SchedulePage {
         
   }
   ionViewDidLoad() {
-    
+    this.getQuotes();
   }
   ionViewWillEnter(){
     let errorCallback = (e) => {
@@ -81,7 +81,7 @@ export class SchedulePage {
  }else{
   this.enableLocation();
  }
- this.getQuotes();
+
 };
     this.diagnostic.isLocationEnabled().then(successCallback).catch(errorCallback);
   }
@@ -167,7 +167,7 @@ export class SchedulePage {
   // }
   shareApp(){
   console.log("Share ...");
-  this.socialSharing.share("Ilm-e-Islam", "App", "", "");
+  this.socialSharing.share("https://play.google.com/store/apps/details?id=com.islamic.ilm", "Ilm-e-Islam", "", "");
 
   }
   getQuotes(){
@@ -196,10 +196,8 @@ export class SchedulePage {
     function nonNumaric(str){
       return parseInt(str.replace(/\D/g,''));
     }
-    let setTime={} 
-    if(currentTime <= nonNumaric(time.Fajr)){
-      setTime={time:time.Fajr,text: 'Fajr'}
-      }else if(currentTime > nonNumaric(time.Fajr) && currentTime <= nonNumaric(time.Dhuhr)){
+    let setTime={}
+     if(currentTime > nonNumaric(time.Fajr) && currentTime <= nonNumaric(time.Dhuhr)){
         setTime={time:time.Dhuhr,text: 'Dhuhr'}
       }else if(currentTime > nonNumaric(time.Dhuhr) && currentTime <= nonNumaric(time.Asr)){
         setTime={time:time.Asr,text: 'Asr'}
@@ -207,8 +205,10 @@ export class SchedulePage {
         setTime={time:time.Maghrib,text: 'Maghrib'}
       }else if(currentTime > nonNumaric(time.Maghrib) && currentTime <= nonNumaric(time.Isha)){
         setTime={time:time.Isha,text: 'Isha'}
-      }else{
+      }else if(currentTime > nonNumaric(time.Isha) && currentTime <= nonNumaric(time.Midnight)){
         setTime={time:time.Midnight,text: 'Midnight'}
+      }else{
+        setTime={time:time.Fajr,text: 'Fajr'}
       }
     return setTime;
   }

@@ -9,10 +9,12 @@
   <ion-navbar>
       <ion-item>
           <ion-label>Surah</ion-label>
-          <ion-select [(ngModel)]="selectedSurah" color="light">
+          <ion-select [(ngModel)]="selectedSurah" color="light" (ionChange)="loadSeletedSurah()">
             <ion-option *ngFor="let surahname of surah" [value]="surahname.number">{{surahname.englishName}}  {{surahname.name}}</ion-option>
-           
+
           </ion-select>
+          <ion-icon name="play" item-end *ngIf="!isPlay" (click)="play()"></ion-icon>
+          <ion-icon name="pause" item-end (click)="pause()" *ngIf="isPlay"></ion-icon>
         </ion-item>
   </ion-navbar>
 
@@ -20,20 +22,15 @@
 
 
 <ion-content>
-  <ion-card>
-        
-    <ion-card-header>
-     
-    </ion-card-header>
-  
+  <ion-card  *ngFor="let surah of SurahDetails['ar'].ayahs; let i = index" class="arabic-text">
     <ion-card-content>
-     <p *ngFor="let surah of SurahDetails.ayahs" class="arabic-text">{{surah.text}}</p>
+       <p>
+          {{surah.text}}
+          <span class="numbers"><span>{{convertToDigit(surah.numberInSurah)}}</span></span>
+       </p>
+       <p class="enlishText">{{getTranslation(i).text}}</p>
       </ion-card-content>
     
     
       </ion-card>
-<div class="footer">
-   
-
-</div>
 </ion-content>

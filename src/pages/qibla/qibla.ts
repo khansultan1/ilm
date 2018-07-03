@@ -49,8 +49,8 @@ export class QiblaPage {
         let directionCont = this.directionCont.nativeElement;
           let heading=360-Math.round(data.trueHeading);
         directionCont.style.transform = "rotate("+heading+"deg)";
-        //var bearing = this.getBearing(this.klat,this.klong,this.currentLatLng['latitude'],this.currentLatLng['longitude']);
-                      //this.rotateAnimation(bearing);
+        var bearing = this.getBearing(this.klat,this.klong,this.currentLatLng['latitude'],this.currentLatLng['longitude']);
+                      this.rotateAnimation(heading +bearing);
                   
                                 
       });

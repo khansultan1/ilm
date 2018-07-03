@@ -57,7 +57,7 @@
       <ion-list no-margin class="friends-items">
         <ion-item-group *ngFor="let event of holidayes">
           <ion-item>
-            <h3>{{event.hijri['holidays'].join('')}}</h3>
+            <h3>{{event.hijri['holidays'].join('')}} ({{event.gregorian.date}})</h3>
             <p item-subtitle>
               {{event.hijri['day'] }}
               {{event.hijri['month'].en }}

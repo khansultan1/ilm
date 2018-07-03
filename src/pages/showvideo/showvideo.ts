@@ -15,6 +15,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 })
 export class ShowvideoPage {
   trustedVideoUrl: SafeResourceUrl;
+  name:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private domSanitizer: DomSanitizer) {
     
   }
@@ -22,6 +23,7 @@ export class ShowvideoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShowvideoPage');
    let channel= this.navParams.get('channelId');
+    this.name= this.navParams.get('name');
    let url='https://www.youtube.com/embed/';
    this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(url+channel);
   }

@@ -1,5 +1,5 @@
 import { Component,ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
@@ -25,8 +25,11 @@ export class HalalPlacesPage {
   source: any = [] // source lat,long
   destination: any =  [] // dest lat,long
   default:any;
+  loader:any;
   @ViewChild('halalplace') mapElement: ElementRef;
-  constructor(public navCtrl: NavController, private modalCtrl:ModalController, private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public navParams: NavParams, private geolocation: Geolocation) {
+  constructor(public loading: LoadingController, public navCtrl: NavController, private modalCtrl:ModalController, private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public navParams: NavParams, private geolocation: Geolocation) {
+    this.loader=this.loading.create();
+    this.loader.present();
   }
 
   ionViewDidLoad() {
@@ -57,7 +60,7 @@ var request = {
 
 var service = new google.maps.places.PlacesService(this.map);
 service.textSearch(request, callback);
-
+this.loader.dismiss();
 
 // service.nearbySearch({
 //   location: pyrmont,
@@ -73,6 +76,7 @@ console.log(results);
    }
  }
 }
+
 }
 
 createMarker(place) {

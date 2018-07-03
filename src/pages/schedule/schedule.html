@@ -21,12 +21,12 @@
 
     <ion-card class="location-date-headLine">
         
-        <ion-card-header>
+        <ion-card-header *ngIf="locationData.locality">
             <ion-icon name="pin"></ion-icon>
             <span>{{locationData.locality ? locationData.locality :'Loading your location'}}  {{locationData.subAdministrativeArea}}  {{locationData.administrativeArea}}</span> 
         </ion-card-header>
       
-        <ion-card-content>
+        <ion-card-content *ngIf="activeDateEn.dayname">
             <ion-label >{{activeDateEn.dayname}} {{activeDateEn.readable}}</ion-label>
             <ion-label class="date-er">{{activeDateEn.arabicDate}}</ion-label>
             <ion-item *ngIf="nextPrayerTime.time">
@@ -143,8 +143,8 @@
       No Sessions Found
   </ion-list-header> -->
 
-  <ion-fab bottom right #fab>
-    <button ion-fab><ion-icon name="share" (click)="shareApp()"></ion-icon></button>
+  <ion-fab bottom right #fab (click)="shareApp()">
+    <button ion-fab><ion-icon name="share" ></ion-icon></button>
   </ion-fab>
 
 

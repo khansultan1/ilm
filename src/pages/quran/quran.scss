@@ -1,8 +1,43 @@
 page-quran {
     .card-md{background: rgb(32, 185, 154);}
     .card-md p{
-        color:#fff;text-align:center;font-size:3.5rem;
+        color:#fff;text-align:center;font-size:3rem;
     }
     .alert-radio-icon{border-color: #45dbc7 !important;}
     .footer{bottom:0;position: absolute;width: 100%}
+
+   .ayah-number-2digit{
+    font-size: 2.5rem;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    right: 7px;
+    top: 7px;
+    }
+    .numbers{   
+        font-size: .7rem;
+        bottom: 2px;
+        border: 1px solid #78dac6;
+        padding: 6px;
+        border-radius: 50%; 
+    }
+    .arabic-text{font-size: 3.5rem;text-align: center;margin-top:5px;margin-bottom: 5px;}
+     .ayah-text{display: inline;position: relative}
+     .ayah-num-contaner{
+         display: inline;
+        position: relative;
+        margin-right: 40px;
+        top: 20px;
+    }
+    .item-md{background: transparent}
+    .select-md{padding: 13px 8px 13px 0px;}
+    ion-select{width: 50%;}
+    .item-md ion-icon[item-left], .item-md ion-icon[item-right], .item-md ion-icon[item-start], .item-md ion-icon[item-end]{
+        padding: 0px 0px 0px 15px;
+        z-index: 1000;
+    }
+    p.enlishText{
+        font-size: 1.5rem !important;
+        padding-top: 10px;
+    }
 }

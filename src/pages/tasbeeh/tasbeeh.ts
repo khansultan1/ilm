@@ -38,6 +38,7 @@ resetCount(){
      this.counter=0;
 }
 setCount(num){
-this.tCount=num;
+  this.counter=0;
+  this.tCount=num;
 }
 }

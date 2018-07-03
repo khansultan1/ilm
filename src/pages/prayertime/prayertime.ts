@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController, LoadingController } from 'ionic-angular';
 import { TimeTableData } from '../../providers/timetable-data';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { Geolocation } from '@ionic-native/geolocation';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { SettingsPage } from '../settings/settings';
+import moment from 'moment';
 @IonicPage()
 @Component({
   selector: 'page-prayertime',
@@ -15,8 +18,11 @@ export class PrayertimePage {
   currentDateData:any=[];
   activeDateEn:any={};
   confDate: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: TimeTableData,  public modalCtrl: ModalController, public geolocation:Geolocation  ) {
-   
+  loading:any;
+  activeAlarm:any=localStorage.activeAlarm ?JSON.parse(localStorage.activeAlarm) :{}
+  constructor(public loadCTRL: LoadingController, public localNofication: LocalNotifications, public navCtrl: NavController, public navParams: NavParams, public confData: TimeTableData,  public modalCtrl: ModalController, public geolocation:Geolocation  ) {
+   this.loading=loadCTRL.create();
+   this.loading.present();
   }
 
   ionViewDidLoad() {
@@ -34,6 +40,7 @@ export class PrayertimePage {
     
       this.tdData=data.data;
       this.getCurrentDateData();
+      this.loading.dismiss();
    });
   })
   }
@@ -64,5 +71,40 @@ export class PrayertimePage {
       
     });
 
+  }
+  setAlarm(name, time){
+      this.activeAlarm[name]='active';
+      localStorage.activeAlarm = JSON.stringify(this.activeAlarm);
+      let nTime= time.replace(/[a-zA-Z\(\)\/ " "]/g,"");
+     // nTime="22:35"
+      let d1 = moment(nTime, 'HH:mm');
+      // let now = moment(new Date()).format('HH:mm');
+      // let end = moment(d1).format('HH:mm');
+    let diff=moment.duration(d1.diff(moment(new Date())))
+    let milliseconds= diff['_milliseconds'];
+    if(milliseconds <1){
+      diff=moment.duration(d1.diff(moment(d1.diff(new Date(moment(new Date()).add(1,'days').format('MM/DD/YYYY') +" "+nTime)))))
+      milliseconds=diff['_milliseconds'];
+    }
+    console.log(diff.asHours(), diff.asSeconds())
+    console.log(d1.unix())
+     // moment(moment(startTime,"hh:mm").diff(moment(endTime,"hh:mm"))).format("hh:mm");
+    this.localNofication.schedule({
+      id:name,
+      title: "Ilm-e-Islam",
+      text: "Salah Time "+name ,
+      trigger: {at: new Date(new Date().getTime()+ milliseconds)},
+      sound: 'azan',
+      vibrate:true,
+      every:'day',
+  });
+  }
+  settingsPage(){
+this.navCtrl.push(SettingsPage);
+  }
+  removeAlarm(name){
+    delete this.activeAlarm[name];
+    localStorage.activeAlarm = JSON.stringify(this.activeAlarm);
+    this.localNofication.clear(name);
   }
 }

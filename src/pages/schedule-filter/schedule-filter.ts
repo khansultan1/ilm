@@ -63,7 +63,8 @@ export class ScheduleFilterPage {
     this.navCtrl.push(AboutPage)
   }
   shareApp(){
-    this.socialSharing.share("Ilm-e-Islam", "App", "", "");
+    this.socialSharing.share("https://play.google.com/store/apps/details?id=com.islamic.ilm", "Ilm-e-Islam", "", "");
+
   }
   feedbackPage(){
     this.navCtrl.push(FeedbackPage);

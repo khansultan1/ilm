@@ -18,17 +18,12 @@ export class TimeTableData {
 
   load(lat,long): any {
     
-    if (this.data) {
-      return Observable.of(this.data);
-    } else {
-    
+  
       let method=localStorage.method ?localStorage.method :new defaultSettings().settings.method;
       let jschool=localStorage.jschool ?localStorage.jschool :new defaultSettings().settings.j_school;
       return this.http.get('http://api.aladhan.com/v1/calendar?latitude='+lat+'&longitude='+long+'&method='+method+'&school='+jschool)
         .map(this.processData, this);
       
-     
-    }
   }
   getCalendar(month,year){
    
@@ -57,14 +52,14 @@ export class TimeTableData {
     return  this.selectedSurah = data.json();
   }
   getSurahFrom(surahNumber:any, language, from){
-    if (this.selectedSurah) {
-      return Observable.of(this.selectedSurah);
-    } else {
-  
       return this.http.get('http://api.alquran.cloud/surah/'+surahNumber+'/'+language+'.'+from)
-        .map(this.processSurah, this);
+        .map(this.processSelected, this);
       
-     
-    }
   }
+  postFeedback(obj){
+    console.log(obj);
+    return this.http.get('http://codefficient.com/islamicappemail.php?email='+obj.email+'&'+'name='+obj.title+'&feedback='+obj.description).subscribe(res => console.log(res.text()));
+       
+  }
+  
 }

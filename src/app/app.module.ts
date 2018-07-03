@@ -14,7 +14,7 @@ import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { ZakatcalcPage } from '../pages/zakatcalc/zakatcalc';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { DuaPage } from '../pages/dua/dua';
 import { TimeTableData } from '../providers/timetable-data';
 import { UserData } from '../providers/user-data';
@@ -39,6 +39,8 @@ import { TimepreferencesPage } from '../pages/timepreferences/timepreferences';
 import { FeedbackPage, FormsPage  } from '../pages/feedback/feedback';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { QuranPage  } from '../pages/quran/quran';
+import { Network } from '@ionic-native/network';
+
 @NgModule({
   declarations: [
     IslamicApp,
@@ -73,6 +75,7 @@ import { QuranPage  } from '../pages/quran/quran';
     IonicModule.forRoot(IslamicApp, {}),
     IonicStorageModule.forRoot()
   ],
+  
   bootstrap: [IonicApp],
   entryComponents: [
     IslamicApp,
@@ -113,7 +116,10 @@ import { QuranPage  } from '../pages/quran/quran';
     LaunchNavigator,
     Geolocation,
     NativeGeocoder,
-    SocialSharing
+    SocialSharing,
+    Network,
+    LocalNotifications,
+    
   ]
 })
 export class AppModule { }

@@ -9,7 +9,9 @@ export class UserData {
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
-
+  audio:any;
+  SurahDetails:any={ar:{},en:{}};
+  SelectSurah:any=[];
   constructor(
     public events: Events,
     public storage: Storage
@@ -71,8 +73,26 @@ export class UserData {
   };
   convertToArabic(str){
     var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-    return str.replace(/[0-9]/g, function(w){
+    return str.toString().replace(/[0-9]/g, function(w){
      return id[+w]
     });
+  }
+  setQuranAudio(audio){
+    this.audio= audio;
+  }
+  getQuranAudio(){
+    return this.audio;
+  }
+  setSurahDetails(data){
+    this.SurahDetails=data;
+  }
+  getSurahDetails(){
+    return this.SurahDetails;
+  }
+  setSelectSurah(surah){
+    this.SelectSurah=surah; 
+  }
+  getSelectSurah(){
+    return this.SelectSurah;
   }
 }

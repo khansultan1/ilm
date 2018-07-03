@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
-import { Platform,ModalController } from 'ionic-angular';
+import { Platform,ModalController, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
@@ -19,8 +19,11 @@ export class MapPage {
   source: any = [] // source lat,long
 destination: any =  [] // dest lat,long
 default:any;
+  loader:any;
   @ViewChild('mapCanvas') mapElement: ElementRef;
-  constructor(private geolocation: Geolocation, public platform: Platform,private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public modalCtrl: ModalController) {
+  constructor(public loading:LoadingController, private geolocation: Geolocation, public platform: Platform,private ref: ChangeDetectorRef, private launchnavigator:LaunchNavigator, public modalCtrl: ModalController) {
+   this.loader=this.loading.create();
+   this.loader.present();
   }
 
   ionViewDidLoad() {
@@ -51,6 +54,7 @@ default:any;
       radius:localStorage.zoomradius? (parseInt(localStorage.zoomradius)*1000) :this.default.mapRadius,
       type: ['mosque']
     }, callback);
+    this.loader.dismiss();
   })
   function callback(results, status) {
     

@@ -25,14 +25,16 @@
           </ion-avatar>
           <h2>{{timing.name}}</h2>
           <p>{{timing.value}}</p>
-          <button ion-button clear item-end>View</button>
+          <ion-icon item-end  name="notifications" (click)="setAlarm(timing.name, timing.value)" *ngIf="!activeAlarm[timing.name]"></ion-icon>
+          <ion-icon item-end  name="notifications-off" (click)="removeAlarm(timing.name)" *ngIf="activeAlarm[timing.name]"></ion-icon>
+          
         </ion-item>
       </ion-list>
  
 
       <ion-list class="footer-info">
       <ion-item>      
-      <button ion-item>
+      <button ion-item (click)="settingsPage()">
           <ion-icon name="settings" item-start></ion-icon>
           Change Time Preferences
         </button>

@@ -22,7 +22,7 @@ export class IslamicChannelPage {
     icon:'./assets/img/kaaba.png'
   },
   {
-  channelId:'O430xiwoMzE',
+  channelId:'1558yU02-xQ',
     name:'Live Madina',
     url:'',
     icon:'./assets/img/madina.png'
@@ -62,9 +62,10 @@ export class IslamicChannelPage {
     
     // this.streamingMedia.playVideo('https://www.youtube.com/embed/live_stream?channel=UCCif7uiJJKqzDDGPsSVzJSw', options);
   }
-openChannel(channelId){
+openChannel(channelId,name){
   this.navCtrl.push(ShowvideoPage,{
-    channelId:channelId
+    channelId:channelId,
+    name:name
   });
 }
 }

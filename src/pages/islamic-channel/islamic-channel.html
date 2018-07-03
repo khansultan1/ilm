@@ -15,7 +15,7 @@
 
 <ion-content class="live-channels">
     <ion-list>
-        <button ion-item  *ngFor="let channel of channelList" (click)="openChannel(channel.channelId)">
+        <button ion-item  *ngFor="let channel of channelList" (click)="openChannel(channel.channelId, channel.name)">
             <ion-icon item-start><img [src]="channel.icon" /></ion-icon>
           {{channel.name}}
           <button ion-button clear item-end>Watch</button>
