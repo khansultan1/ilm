@@ -10,7 +10,7 @@ import { UserData } from '../../providers/user-data';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-quran',
   templateUrl: 'quran.html',

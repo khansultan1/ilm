@@ -9,7 +9,6 @@ import { DuadetailsPage } from '../duadetails/duadetails';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-dua',
   templateUrl: 'dua.html',

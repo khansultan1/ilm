@@ -9,7 +9,7 @@ import { SinglenamePage } from '../singlename/singlename';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-nameofallah',
   templateUrl: 'nameofallah.html',

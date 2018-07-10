@@ -40,7 +40,7 @@ import { FeedbackPage, FormsPage  } from '../pages/feedback/feedback';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { QuranPage  } from '../pages/quran/quran';
 import { Network } from '@ionic-native/network';
-
+import { Deeplinks } from '@ionic-native/deeplinks';
 @NgModule({
   declarations: [
     IslamicApp,
@@ -72,7 +72,7 @@ import { Network } from '@ionic-native/network';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(IslamicApp, {}),
+    IonicModule.forRoot(IslamicApp, {navExitApp: false}),
     IonicStorageModule.forRoot()
   ],
   
@@ -119,7 +119,7 @@ import { Network } from '@ionic-native/network';
     SocialSharing,
     Network,
     LocalNotifications,
-    
+    Deeplinks
   ]
 })
 export class AppModule { }

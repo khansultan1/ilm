@@ -4,7 +4,7 @@ import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-nativ
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { Geolocation } from '@ionic-native/geolocation';
 declare var google: any;
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-qibla',
   templateUrl: 'qibla.html',

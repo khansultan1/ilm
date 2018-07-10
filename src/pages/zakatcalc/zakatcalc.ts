@@ -8,7 +8,7 @@ import {NgForm} from '@angular/forms';
  * on Ionic pages and navigation.
  */
 declare var Keyboard:any;
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-zakatcalc',
   templateUrl: 'zakatcalc.html',

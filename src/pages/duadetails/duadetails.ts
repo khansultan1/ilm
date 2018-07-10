@@ -8,7 +8,7 @@ import {Dua} from '../../model/dua'
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-duadetails',
   templateUrl: 'duadetails.html',

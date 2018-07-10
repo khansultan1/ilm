@@ -9,7 +9,7 @@ import {defaultSettings} from '../../model/defaultsettings';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',

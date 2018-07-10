@@ -6,7 +6,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { SettingsPage } from '../settings/settings';
 import moment from 'moment';
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-prayertime',
   templateUrl: 'prayertime.html',

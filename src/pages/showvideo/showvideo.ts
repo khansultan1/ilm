@@ -8,7 +8,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-showvideo',
   templateUrl: 'showvideo.html',

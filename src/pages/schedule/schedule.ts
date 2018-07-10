@@ -193,7 +193,8 @@ export class SchedulePage {
   }
   getPrayrerTime(time){
     let currentTime=parseInt(new Date().getHours().toString() + new Date().getMinutes().toString());
-    function nonNumaric(str){
+
+   function nonNumaric(str){
       return parseInt(str.replace(/\D/g,''));
     }
     let setTime={}

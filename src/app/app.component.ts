@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform, NavController } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform, NavController, ToastController,App, AlertController,IonicApp } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { AboutPage } from '../pages/about/about';
@@ -20,6 +20,7 @@ import { IslamicChannelPage } from '../pages/islamic-channel/islamic-channel';
 import { PrayertimePage } from '../pages/prayertime/prayertime';
 import { QuranPage } from '../pages/quran/quran';
 import { Network } from '@ionic-native/network';
+import { Deeplinks } from '@ionic-native/deeplinks';
 export interface PageInterface {
   title: string;
   name: string;
@@ -66,7 +67,12 @@ export class IslamicApp {
     public confData: TimeTableData,
     public storage: Storage,
     public splashScreen: SplashScreen,
-    public network: Network
+    public network: Network,
+    public toastCtrl: ToastController,
+    public app: App,
+    public alertCtrl: AlertController,
+    public ionicApp: IonicApp,
+    private deeplinks: Deeplinks
   ) {
 
     
@@ -93,7 +99,9 @@ export class IslamicApp {
 
     this.listenToLoginEvents();
   }
-
+  initializeApp(){
+    console.log("app init..");
+  }
   openPage(page: PageInterface) {
     let params = {};
 
@@ -148,6 +156,7 @@ export class IslamicApp {
   platformReady() {
     // Call any initial plugins when ready
     this.platform.ready().then(() => {
+      console.log();
       this.splashScreen.hide();
       this.platform.ready().then(() => {
         if (this.platform.is('ios')) {
@@ -155,7 +164,8 @@ export class IslamicApp {
            window['plugins'].webviewcolor.change('#000000');
         }
       })
-
+     
+     
       let disconnectSub = this.network.onDisconnect().subscribe(() => {
         console.log('you are offline');
         alert("Please connect to the internet");
@@ -166,6 +176,31 @@ export class IslamicApp {
       });
 
     });
+
+    this.deeplinks.routeWithNavController(this.nav, {
+      '/about-us': AboutPage,
+      '/map-page': MapPage,
+      '/shedule-page': SchedulePage,
+      '/time-table': TimeTableData,
+      '/dua-page': DuaPage,
+      '/nameofallahPage': NameofallahPage,
+      '/tasbeehPage': TasbeehPage,
+      '/zakat-calculator': ZakatcalcPage,
+      '/halal-places': HalalPlacesPage,
+      '/calendar': CalendarPage,
+      '/islamicChannelPage': IslamicChannelPage,
+      '/PrayertimePage': PrayertimePage,
+      '/QuranPage': QuranPage,
+    }).subscribe(match => {
+      // match.$route - the route we matched, which is the matched entry from the arguments to route()
+      // match.$args - the args passed in the link
+      // match.$link - the full link data
+      console.log('Successfully matched route', match);
+    }, nomatch => {
+      // nomatch.$link - the full link data
+      console.error('Got a deeplink that didn\'t match', nomatch);
+    });
+
   }
 
   isActive(page: PageInterface) {

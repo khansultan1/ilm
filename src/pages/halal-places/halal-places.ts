@@ -13,7 +13,7 @@ declare var google: any;
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-halal-places',
   templateUrl: 'halal-places.html',

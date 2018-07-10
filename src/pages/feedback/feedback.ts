@@ -9,7 +9,7 @@ import { TimeTableData } from '../../providers/timetable-data';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-feedback',
   templateUrl: 'feedback.html',

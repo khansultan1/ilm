@@ -9,7 +9,7 @@ import { ShowvideoPage } from '../showvideo/showvideo';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-islamic-channel',
   templateUrl: 'islamic-channel.html',

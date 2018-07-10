@@ -9,7 +9,7 @@ import { TimeTableData } from '../../providers/timetable-data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: "page-calendar",
   templateUrl: "calendar.html"
